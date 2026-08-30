@@ -1,0 +1,1835 @@
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Crie a sua conta no Ecossistema Digital Vulcânico."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080808"
+    >
+
+    <title>Criar Conta — VULCÂNICO</title>
+
+    <!-- CSS PRINCIPAL -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- ESTILO ESPECÍFICO DO CADASTRO -->
+    <style>
+
+        /* =====================================================
+           CADASTRO — VULCÂNICO
+           ===================================================== */
+
+        .auth-page {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(215,255,63,.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(215,255,63,.05),
+                    transparent 30%
+                ),
+                #080808;
+
+            padding: 60px 20px;
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+           ===================================================== */
+
+        .auth-background {
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+        }
+
+
+        .auth-grid {
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .035;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                60px 60px;
+        }
+
+
+        .auth-glow {
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(215,255,63,.08),
+                    transparent 70%
+                );
+
+            filter: blur(30px);
+        }
+
+
+        .auth-glow.one {
+            top: -250px;
+            left: -250px;
+        }
+
+
+        .auth-glow.two {
+            right: -250px;
+            bottom: -250px;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+           ===================================================== */
+
+        .auth-container {
+            width: 100%;
+
+            max-width: 620px;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        /* =====================================================
+           BRAND
+           ===================================================== */
+
+        .auth-brand {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .auth-brand a {
+            text-decoration: none;
+
+            display: inline-block;
+        }
+
+
+        .auth-brand-name {
+            font-size: 26px;
+
+            font-weight: 900;
+
+            letter-spacing: .18em;
+
+            color: #ffffff;
+        }
+
+
+        .auth-brand-name span {
+            color: #d7ff3f;
+        }
+
+
+        .auth-brand p {
+            margin-top: 10px;
+
+            font-size: 13px;
+
+            color: rgba(255,255,255,.45);
+
+            letter-spacing: .04em;
+        }
+
+
+        /* =====================================================
+           CARD
+           ===================================================== */
+
+        .auth-card {
+            width: 100%;
+
+            padding: 45px;
+
+            border: 1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.065),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter: blur(30px);
+
+            -webkit-backdrop-filter: blur(30px);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.5);
+        }
+
+
+        .auth-heading {
+            margin-bottom: 32px;
+        }
+
+
+        .auth-heading .eyebrow {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .18em;
+
+            color: #d7ff3f;
+        }
+
+
+        .auth-heading h1 {
+            margin: 0;
+
+            font-size: clamp(
+                30px,
+                5vw,
+                46px
+            );
+
+            line-height: 1;
+
+            letter-spacing: -.04em;
+
+            color: #ffffff;
+        }
+
+
+        .auth-heading p {
+            margin-top: 15px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: rgba(255,255,255,.5);
+        }
+
+
+        /* =====================================================
+           FORM
+           ===================================================== */
+
+        .auth-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 19px;
+        }
+
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 16px;
+        }
+
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .form-group label {
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .1em;
+
+            color:
+                rgba(255,255,255,.6);
+        }
+
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+
+            min-height: 54px;
+
+            padding:
+                0 16px;
+
+            border: 1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 12px;
+
+            outline: none;
+
+            color: #ffffff;
+
+            background:
+                rgba(255,255,255,.045);
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition:
+                border-color .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .form-group input::placeholder {
+            color:
+                rgba(255,255,255,.25);
+        }
+
+
+        .form-group select {
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            cursor: pointer;
+
+            background-image:
+                linear-gradient(
+                    45deg,
+                    transparent 50%,
+                    rgba(255,255,255,.5) 50%
+                ),
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.5) 50%,
+                    transparent 50%
+                );
+
+            background-position:
+                calc(100% - 18px) 23px,
+                calc(100% - 12px) 23px;
+
+            background-size:
+                6px 6px,
+                6px 6px;
+
+            background-repeat: no-repeat;
+        }
+
+
+        .form-group select option {
+            background: #111111;
+
+            color: #ffffff;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color:
+                rgba(215,255,63,.55);
+
+            background:
+                rgba(215,255,63,.035);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(215,255,63,.07);
+        }
+
+
+        /* =====================================================
+           PASSWORD
+           ===================================================== */
+
+        .password-wrapper {
+            position: relative;
+        }
+
+
+        .password-wrapper input {
+            padding-right: 55px;
+        }
+
+
+        .toggle-password {
+            position: absolute;
+
+            top: 50%;
+
+            right: 14px;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                rgba(255,255,255,.4);
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            padding: 8px;
+        }
+
+
+        .toggle-password:hover {
+            color: #d7ff3f;
+        }
+
+
+        /* =====================================================
+           PASSWORD STRENGTH
+           ===================================================== */
+
+        .password-strength {
+            display: none;
+
+            margin-top: 2px;
+        }
+
+
+        .password-strength.visible {
+            display: block;
+        }
+
+
+        .strength-bar {
+            height: 3px;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 100px;
+
+            background:
+                rgba(255,255,255,.08);
+        }
+
+
+        .strength-progress {
+            height: 100%;
+
+            width: 0%;
+
+            border-radius: inherit;
+
+            background: #d7ff3f;
+
+            transition: width .3s ease;
+        }
+
+
+        .strength-text {
+            display: block;
+
+            margin-top: 7px;
+
+            font-size: 10px;
+
+            color:
+                rgba(255,255,255,.4);
+        }
+
+
+        /* =====================================================
+           TERMS
+           ===================================================== */
+
+        .terms {
+            display: flex;
+
+            align-items:
+                flex-start;
+
+            gap: 11px;
+
+            margin-top: 4px;
+        }
+
+
+        .terms input {
+            width: 17px;
+
+            height: 17px;
+
+            margin-top: 1px;
+
+            flex-shrink: 0;
+
+            accent-color: #d7ff3f;
+
+            cursor: pointer;
+        }
+
+
+        .terms label {
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color:
+                rgba(255,255,255,.45);
+
+            cursor: pointer;
+        }
+
+
+        .terms a {
+            color: #d7ff3f;
+
+            text-decoration: none;
+        }
+
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           SUBMIT
+           ===================================================== */
+
+        .auth-submit {
+            width: 100%;
+
+            min-height: 58px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #d7ff3f;
+
+            color: #080808;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                opacity .25s ease;
+        }
+
+
+        .auth-submit:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(215,255,63,.16);
+        }
+
+
+        .auth-submit:active {
+            transform:
+                translateY(0);
+        }
+
+
+        .auth-submit.loading {
+            opacity: .7;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           DIVIDER
+           ===================================================== */
+
+        .auth-divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin: 25px 0;
+        }
+
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,.08);
+        }
+
+
+        .auth-divider span {
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+
+            color:
+                rgba(255,255,255,.25);
+        }
+
+
+        /* =====================================================
+           LOGIN LINK
+           ===================================================== */
+
+        .auth-login {
+            text-align: center;
+
+            font-size: 13px;
+
+            color:
+                rgba(255,255,255,.45);
+        }
+
+
+        .auth-login a {
+            color: #ffffff;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+
+        .auth-login a:hover {
+            color: #d7ff3f;
+        }
+
+
+        /* =====================================================
+           ERROR
+           ===================================================== */
+
+        .form-error {
+            display: none;
+
+            padding: 13px 15px;
+
+            border: 1px solid
+                rgba(255,80,80,.2);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,80,80,.06);
+
+            color:
+                rgba(255,140,140,.9);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .form-error.visible {
+            display: block;
+        }
+
+
+        /* =====================================================
+           SUCCESS
+           ===================================================== */
+
+        .form-success {
+            display: none;
+
+            padding: 15px;
+
+            border: 1px solid
+                rgba(215,255,63,.2);
+
+            border-radius: 10px;
+
+            background:
+                rgba(215,255,63,.05);
+
+            color:
+                rgba(215,255,255,.85);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .form-success.visible {
+            display: block;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .auth-page {
+                padding:
+                    35px 15px;
+            }
+
+
+            .auth-card {
+                padding:
+                    30px 20px;
+
+                border-radius: 18px;
+            }
+
+
+            .form-row {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .auth-heading h1 {
+                font-size: 34px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .auth-card {
+                padding:
+                    25px 16px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PÁGINA DE AUTENTICAÇÃO
+         ===================================================== -->
+
+    <main class="auth-page">
+
+
+        <!-- BACKGROUND -->
+
+        <div
+            class="auth-background"
+            aria-hidden="true"
+        >
+
+            <div class="auth-grid"></div>
+
+            <div class="auth-glow one"></div>
+
+            <div class="auth-glow two"></div>
+
+        </div>
+
+
+        <!-- CONTAINER -->
+
+        <div class="auth-container">
+
+
+            <!-- BRAND -->
+
+            <div class="auth-brand">
+
+                <a href="../index.html">
+
+                    <div class="auth-brand-name">
+                        VULCÂNICO<span>.</span>
+                    </div>
+
+                </a>
+
+                <p>
+                    Onde artistas criam, conectam e crescem.
+                </p>
+
+            </div>
+
+
+            <!-- CARD -->
+
+            <section class="auth-card">
+
+
+                <!-- HEADING -->
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Ecossistema Digital
+                    </span>
+
+                    <h1>
+                        Crie a sua conta.
+                    </h1>
+
+                    <p>
+                        Entre para um ecossistema criado
+                        para artistas, produtores,
+                        designers e criadores.
+                    </p>
+
+                </div>
+
+
+                <!-- MENSAGENS -->
+
+                <div
+                    class="form-error"
+                    id="formError"
+                    role="alert"
+                ></div>
+
+
+                <div
+                    class="form-success"
+                    id="formSuccess"
+                    role="status"
+                ></div>
+
+
+                <!-- FORMULÁRIO -->
+
+                <form
+                    class="auth-form"
+                    id="registerForm"
+                    novalidate
+                >
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Digite o seu nome completo"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- NOME ARTÍSTICO -->
+
+                    <div class="form-group">
+
+                        <label for="artistName">
+                            Nome artístico
+                        </label>
+
+                        <input
+                            type="text"
+                            id="artistName"
+                            name="artistName"
+                            placeholder="Como o público conhece você?"
+                            autocomplete="nickname"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL / TELEFONE -->
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="seuemail@email.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Telefone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+244 9XX XXX XXX"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- LOCALIZAÇÃO / PERFIL -->
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="country">
+                                País
+                            </label>
+
+                            <select
+                                id="country"
+                                name="country"
+                                required
+                            >
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled
+                                >
+                                    Selecionar país
+                                </option>
+
+                                <option value="AO">
+                                    Angola
+                                </option>
+
+                                <option value="PT">
+                                    Portugal
+                                </option>
+
+                                <option value="BR">
+                                    Brasil
+                                </option>
+
+                                <option value="MZ">
+                                    Moçambique
+                                </option>
+
+                                <option value="CV">
+                                    Cabo Verde
+                                </option>
+
+                                <option value="OTHER">
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="userType">
+                                Tipo de perfil
+                            </label>
+
+                            <select
+                                id="userType"
+                                name="userType"
+                                required
+                            >
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled
+                                >
+                                    Selecionar
+                                </option>
+
+                                <option value="artist">
+                                    Artista
+                                </option>
+
+                                <option value="producer">
+                                    Produtor Musical
+                                </option>
+
+                                <option value="designer">
+                                    Designer Gráfico
+                                </option>
+
+                                <option value="creator">
+                                    Criador de Conteúdo
+                                </option>
+
+                                <option value="other">
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Senha
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Crie uma senha segura"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                data-target="password"
+                                aria-label="Mostrar senha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="password-strength"
+                            id="passwordStrength"
+                        >
+
+                            <div class="strength-bar">
+
+                                <div
+                                    class="strength-progress"
+                                    id="strengthProgress"
+                                ></div>
+
+                            </div>
+
+                            <span
+                                class="strength-text"
+                                id="strengthText"
+                            >
+                                Senha
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRMAR SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirmar senha
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Digite novamente a sua senha"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                data-target="confirmPassword"
+                                aria-label="Mostrar senha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMOS -->
+
+                    <div class="terms">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                            required
+                        >
+
+                        <label for="terms">
+
+                            Li e concordo com os
+                            <a href="#">
+                                Termos de Uso
+                            </a>
+                            e a
+                            <a href="#">
+                                Política de Privacidade
+                            </a>
+                            da plataforma.
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                        id="registerButton"
+                    >
+
+                        Criar minha conta
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- DIVISOR -->
+
+                <div class="auth-divider">
+
+                    <span>
+                        Já faz parte?
+                    </span>
+
+                </div>
+
+
+                <!-- LOGIN -->
+
+                <div class="auth-login">
+
+                    Já possui uma conta?
+
+                    <a href="login.html">
+                        Entrar
+                    </a>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT DO CADASTRO
+         ===================================================== -->
+
+    <script>
+
+        "use strict";
+
+
+        /* =================================================
+           ELEMENTOS
+           ================================================= */
+
+        const registerForm =
+            document.getElementById(
+                "registerForm"
+            );
+
+        const password =
+            document.getElementById(
+                "password"
+            );
+
+        const confirmPassword =
+            document.getElementById(
+                "confirmPassword"
+            );
+
+        const errorBox =
+            document.getElementById(
+                "formError"
+            );
+
+        const successBox =
+            document.getElementById(
+                "formSuccess"
+            );
+
+        const registerButton =
+            document.getElementById(
+                "registerButton"
+            );
+
+        const strengthBox =
+            document.getElementById(
+                "passwordStrength"
+            );
+
+        const strengthProgress =
+            document.getElementById(
+                "strengthProgress"
+            );
+
+        const strengthText =
+            document.getElementById(
+                "strengthText"
+            );
+
+
+        /* =================================================
+           MOSTRAR / ESCONDER SENHA
+           ================================================= */
+
+        document
+            .querySelectorAll(
+                ".toggle-password"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            document.getElementById(
+                                button.dataset.target
+                            );
+
+                        if (!target)
+                            return;
+
+
+                        if (
+                            target.type ===
+                            "password"
+                        ) {
+
+                            target.type =
+                                "text";
+
+                            button.textContent =
+                                "Ocultar";
+
+                        } else {
+
+                            target.type =
+                                "password";
+
+                            button.textContent =
+                                "Mostrar";
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =================================================
+           FORÇA DA SENHA
+           ================================================= */
+
+        password.addEventListener(
+            "input",
+            () => {
+
+                const value =
+                    password.value;
+
+                if (!value) {
+
+                    strengthBox.classList
+                        .remove("visible");
+
+                    return;
+
+                }
+
+
+                strengthBox.classList
+                    .add("visible");
+
+
+                let score = 0;
+
+
+                if (value.length >= 8)
+                    score++;
+
+
+                if (
+                    /[A-Z]/.test(value)
+                )
+                    score++;
+
+
+                if (
+                    /[a-z]/.test(value)
+                )
+                    score++;
+
+
+                if (
+                    /[0-9]/.test(value)
+                )
+                    score++;
+
+
+                if (
+                    /[^A-Za-z0-9]/.test(value)
+                )
+                    score++;
+
+
+                const percentage =
+                    (score / 5) * 100;
+
+
+                strengthProgress.style.width =
+                    percentage + "%";
+
+
+                if (score <= 1) {
+
+                    strengthText.textContent =
+                        "Senha muito fraca";
+
+                } else if (score === 2) {
+
+                    strengthText.textContent =
+                        "Senha fraca";
+
+                } else if (score === 3) {
+
+                    strengthText.textContent =
+                        "Senha razoável";
+
+                } else if (score === 4) {
+
+                    strengthText.textContent =
+                        "Senha forte";
+
+                } else {
+
+                    strengthText.textContent =
+                        "Senha muito forte";
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           LIMPAR MENSAGENS
+           ================================================= */
+
+        function clearMessages() {
+
+            errorBox.classList
+                .remove("visible");
+
+            successBox.classList
+                .remove("visible");
+
+            errorBox.textContent = "";
+
+            successBox.textContent = "";
+
+        }
+
+
+        /* =================================================
+           MOSTRAR ERRO
+           ================================================= */
+
+        function showError(message) {
+
+            errorBox.textContent =
+                message;
+
+            errorBox.classList
+                .add("visible");
+
+            errorBox.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+
+        /* =================================================
+           SUBMIT
+           ================================================= */
+
+        registerForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+                clearMessages();
+
+
+                const fullName =
+                    document
+                        .getElementById(
+                            "fullName"
+                        )
+                        .value.trim();
+
+
+                const artistName =
+                    document
+                        .getElementById(
+                            "artistName"
+                        )
+                        .value.trim();
+
+
+                const email =
+                    document
+                        .getElementById(
+                            "email"
+                        )
+                        .value.trim();
+
+
+                const phone =
+                    document
+                        .getElementById(
+                            "phone"
+                        )
+                        .value.trim();
+
+
+                const country =
+                    document
+                        .getElementById(
+                            "country"
+                        )
+                        .value;
+
+
+                const userType =
+                    document
+                        .getElementById(
+                            "userType"
+                        )
+                        .value;
+
+
+                const terms =
+                    document
+                        .getElementById(
+                            "terms"
+                        )
+                        .checked;
+
+
+                /* =========================================
+                   VALIDAÇÕES
+                   ========================================= */
+
+                if (!fullName) {
+
+                    showError(
+                        "Digite o seu nome completo."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!artistName) {
+
+                    showError(
+                        "Digite o seu nome artístico."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!email) {
+
+                    showError(
+                        "Digite o seu e-mail."
+                    );
+
+                    return;
+
+                }
+
+
+                const emailRegex =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (
+                    !emailRegex.test(email)
+                ) {
+
+                    showError(
+                        "Digite um endereço de e-mail válido."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!phone) {
+
+                    showError(
+                        "Digite o seu número de telefone."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!country) {
+
+                    showError(
+                        "Selecione o seu país."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!userType) {
+
+                    showError(
+                        "Selecione o tipo de perfil."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    password.value.length < 8
+                ) {
+
+                    showError(
+                        "A senha deve possuir pelo menos 8 caracteres."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    password.value !==
+                    confirmPassword.value
+                ) {
+
+                    showError(
+                        "As senhas não coincidem."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!terms) {
+
+                    showError(
+                        "É necessário aceitar os Termos de Uso e a Política de Privacidade."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================================
+                   ESTADO DE ENVIO
+                   ========================================= */
+
+                registerButton.classList
+                    .add("loading");
+
+                registerButton.textContent =
+                    "A preparar a sua conta...";
+
+
+                /*
+                   =================================================
+                   IMPORTANTE
+
+                   AQUI ENTRARÁ A API REAL.
+
+                   Exemplo futuro:
+
+                   const response = await fetch(
+                       "/api/auth/register",
+                       {
+                           method: "POST",
+                           headers: {
+                               "Content-Type":
+                                   "application/json"
+                           },
+                           body: JSON.stringify({
+                               fullName,
+                               artistName,
+                               email,
+                               phone,
+                               country,
+                               userType,
+                               password
+                           })
+                       }
+                   );
+
+                   =================================================
+                */
+
+
+                try {
+
+                    /*
+                       Simulação temporária.
+
+                       NÃO é autenticação real.
+                    */
+
+                    await new Promise(
+                        resolve =>
+                            setTimeout(
+                                resolve,
+                                1000
+                            )
+                    );
+
+
+                    const temporaryUser = {
+
+                        fullName,
+
+                        artistName,
+
+                        email,
+
+                        phone,
+
+                        country,
+
+                        userType,
+
+                        createdAt:
+                            new Date()
+                                .toISOString()
+
+                    };
+
+
+                    /*
+                       Guardamos apenas dados
+                       temporários no navegador.
+
+                       Isto será substituído pelo
+                       banco de dados posteriormente.
+                    */
+
+                    localStorage.setItem(
+                        "vulcanico_pending_user",
+                        JSON.stringify(
+                            temporaryUser
+                        )
+                    );
+
+
+                    successBox.textContent =
+                        "Conta preparada com sucesso. O sistema de autenticação será conectado ao servidor na próxima etapa.";
+
+
+                    successBox.classList
+                        .add("visible");
+
+
+                    registerButton.textContent =
+                        "Conta criada";
+
+
+                    /*
+                       Futuramente:
+
+                       window.location.href =
+                           "dashboard.html";
+                    */
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    showError(
+                        "Não foi possível processar o cadastro. Tente novamente."
+                    );
+
+
+                    registerButton.textContent =
+                        "Criar minha conta";
+
+                }
+
+
+                registerButton.classList
+                    .remove("loading");
+
+            }
+        );
+
+    </script>
+
+
+</body>
+</html>
+```

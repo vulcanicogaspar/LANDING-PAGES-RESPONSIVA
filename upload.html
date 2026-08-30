@@ -1,0 +1,2801 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Envie a sua música para o Ecossistema Digital Vulcânico."
+    >
+
+    <title>Enviar Música — VULCÂNICO</title>
+
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --lime: #d7ff3f;
+            --black: #050505;
+            --panel: #0b0b0b;
+            --border: rgba(255,255,255,.08);
+            --muted: rgba(255,255,255,.42);
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            color: white;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 5%,
+                    rgba(215,255,63,.08),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 5% 90%,
+                    rgba(215,255,63,.04),
+                    transparent 30%
+                ),
+
+                var(--black);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            height: 72px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background:
+                rgba(5,5,5,.88);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .logo {
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: .13em;
+
+        }
+
+
+        .logo span {
+            color: var(--lime);
+        }
+
+
+        .header-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: center;
+
+        }
+
+
+        .header-link {
+
+            padding:
+                10px 13px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 6px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .header-link:hover {
+
+            color: var(--lime);
+
+            border-color:
+                rgba(215,255,63,.3);
+
+        }
+
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .page {
+
+            width:
+                min(1150px, 90%);
+
+            margin: auto;
+
+            padding:
+                75px 0 120px;
+
+        }
+
+
+        .eyebrow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--lime);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--lime);
+
+            box-shadow:
+                0 0 15px
+                var(--lime);
+
+        }
+
+
+        h1 {
+
+            margin:
+                18px 0 15px;
+
+            max-width: 850px;
+
+            font-size:
+                clamp(
+                    48px,
+                    8vw,
+                    86px
+                );
+
+            line-height: .88;
+
+            letter-spacing: -.07em;
+
+        }
+
+
+        h1 span {
+            color: var(--lime);
+        }
+
+
+        .intro {
+
+            max-width: 650px;
+
+            margin-bottom: 55px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+        }
+
+
+
+        /* =====================================================
+           STEPS
+        ===================================================== */
+
+        .progress {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .progress-step {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color:
+                rgba(255,255,255,.25);
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .progress-number {
+
+            width: 27px;
+
+            height: 27px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.05);
+
+        }
+
+
+        .progress-step.active {
+
+            color: white;
+
+        }
+
+
+        .progress-step.active
+        .progress-number {
+
+            background:
+                var(--lime);
+
+            color: #050505;
+
+        }
+
+
+        .progress-line {
+
+            width: 35px;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,.08);
+
+        }
+
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .upload-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 340px;
+
+            gap: 25px;
+
+            align-items: start;
+
+        }
+
+
+        .panel {
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            overflow: hidden;
+
+        }
+
+
+        .panel-header {
+
+            padding:
+                22px 25px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .panel-header h2 {
+
+            margin: 0;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .panel-header p {
+
+            margin:
+                7px 0 0;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 8px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .panel-body {
+
+            padding: 25px;
+
+        }
+
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 23px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.62);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: white;
+
+            font-size: 10px;
+
+            transition: .2s;
+
+        }
+
+
+        textarea {
+
+            min-height: 110px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+
+        }
+
+
+        input::placeholder,
+        textarea::placeholder {
+
+            color:
+                rgba(255,255,255,.2);
+
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color:
+                rgba(215,255,63,.4);
+
+            background:
+                rgba(255,255,255,.045);
+
+        }
+
+
+        select option {
+            background: #111;
+        }
+
+
+        .two-columns {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+
+        .help {
+
+            margin-top: 7px;
+
+            color:
+                rgba(255,255,255,.23);
+
+            font-size: 7px;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        /* =====================================================
+           COVER
+        ===================================================== */
+
+        .cover-upload {
+
+            position: relative;
+
+            min-height: 250px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            border:
+                1px dashed
+                rgba(255,255,255,.15);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.02);
+
+            text-align: center;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            transition: .25s;
+
+        }
+
+
+        .cover-upload:hover {
+
+            border-color:
+                rgba(215,255,63,.45);
+
+            background:
+                rgba(215,255,63,.025);
+
+        }
+
+
+        .cover-preview {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            background-position: center;
+
+            background-size: cover;
+
+        }
+
+
+        .cover-preview::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.5);
+
+        }
+
+
+        .cover-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .cover-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            margin:
+                0 auto 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.08);
+
+            color: var(--lime);
+
+            font-size: 20px;
+
+        }
+
+
+        .cover-upload strong {
+
+            font-size: 9px;
+
+        }
+
+
+        .cover-upload span {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+        }
+
+
+        #cover {
+
+            position: absolute;
+
+            width: 1px;
+
+            height: 1px;
+
+            opacity: 0;
+
+        }
+
+
+
+        /* =====================================================
+           AUDIO
+        ===================================================== */
+
+        .audio-upload {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            min-height: 100px;
+
+            padding: 20px;
+
+            border:
+                1px dashed
+                rgba(255,255,255,.15);
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        .audio-upload:hover {
+
+            border-color:
+                rgba(215,255,63,.4);
+
+        }
+
+
+        .audio-icon {
+
+            flex-shrink: 0;
+
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.08);
+
+            color: var(--lime);
+
+            font-size: 17px;
+
+        }
+
+
+        .audio-info strong {
+
+            display: block;
+
+            font-size: 9px;
+
+        }
+
+
+        .audio-info span {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color:
+                rgba(255,255,255,.28);
+
+            font-size: 7px;
+
+        }
+
+
+        #audio {
+
+            position: absolute;
+
+            opacity: 0;
+
+            width: 1px;
+
+            height: 1px;
+
+        }
+
+
+        .audio-name {
+
+            display: none;
+
+            margin-top: 10px;
+
+            padding: 9px;
+
+            border-radius: 5px;
+
+            color: var(--lime);
+
+            background:
+                rgba(215,255,63,.07);
+
+            font-size: 7px;
+
+        }
+
+
+
+        /* =====================================================
+           CHECKBOXES
+        ===================================================== */
+
+        .checkbox-box {
+
+            padding: 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 7px;
+
+            background:
+                rgba(255,255,255,.02);
+
+        }
+
+
+        .checkbox-line {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .checkbox-line:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .checkbox-line input {
+
+            width: auto;
+
+            margin-top: 2px;
+
+            accent-color:
+                var(--lime);
+
+        }
+
+
+        .checkbox-line label {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 7px;
+
+            font-weight: normal;
+
+            line-height: 1.6;
+
+            text-transform: none;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .checkbox-line strong {
+            color: white;
+        }
+
+
+
+        /* =====================================================
+           PRICE
+        ===================================================== */
+
+        .fee-box {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 18px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.15);
+
+            border-radius: 8px;
+
+            background:
+                rgba(215,255,63,.035);
+
+        }
+
+
+        .fee-label {
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .fee-description {
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,.23);
+
+            font-size: 7px;
+
+        }
+
+
+        .fee-value {
+
+            color: var(--lime);
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+        }
+
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .submit-btn {
+
+            width: 100%;
+
+            height: 54px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background:
+                var(--lime);
+
+            color: #050505;
+
+            cursor: pointer;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition: .2s;
+
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(215,255,63,.12);
+
+        }
+
+
+        .submit-btn:disabled {
+
+            opacity: .5;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+
+        /* =====================================================
+           SIDE
+        ===================================================== */
+
+        .side-card {
+
+            padding: 23px;
+
+        }
+
+
+        .side-card h3 {
+
+            margin:
+                0 0 18px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .side-list {
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        .side-list li {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            padding:
+                12px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.05);
+
+        }
+
+
+        .side-list li:last-child {
+            border-bottom: 0;
+        }
+
+
+        .side-number {
+
+            width: 25px;
+
+            height: 25px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.07);
+
+            color: var(--lime);
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+        }
+
+
+        .side-list strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            font-size: 8px;
+
+        }
+
+
+        .side-list p {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.28);
+
+            font-size: 7px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .highlight-box {
+
+            margin-top: 18px;
+
+            padding: 17px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(215,255,63,.045);
+
+            border:
+                1px solid
+                rgba(215,255,63,.12);
+
+        }
+
+
+        .highlight-box strong {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: var(--lime);
+
+            font-size: 8px;
+
+        }
+
+
+        .highlight-box p {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.32);
+
+            font-size: 7px;
+
+            line-height: 1.7;
+
+        }
+
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.82);
+
+            backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        .modal.active {
+            display: flex;
+        }
+
+
+        .modal-box {
+
+            width:
+                min(480px,100%);
+
+            padding: 40px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.2);
+
+            border-radius: 12px;
+
+            background: #0b0b0b;
+
+            text-align: center;
+
+        }
+
+
+        .modal-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin:
+                0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.1);
+
+            color: var(--lime);
+
+            font-size: 25px;
+
+        }
+
+
+        .modal-box h2 {
+
+            margin: 0;
+
+            font-size: 22px;
+
+        }
+
+
+        .modal-box p {
+
+            margin:
+                12px 0 25px;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 9px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .modal-btn {
+
+            display: inline-block;
+
+            padding:
+                13px 18px;
+
+            border-radius: 6px;
+
+            background: var(--lime);
+
+            color: #050505;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:900px) {
+
+            .upload-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media(max-width:650px) {
+
+            .two-columns {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .progress-line {
+
+                width: 15px;
+
+            }
+
+
+            .progress-step span {
+
+                display: none;
+
+            }
+
+
+            h1 {
+
+                font-size: 53px;
+
+            }
+
+
+            .header-link {
+
+                display: none;
+
+            }
+
+        }
+
+
+        @media(max-width:450px) {
+
+            .page {
+
+                width:
+                    calc(100% - 30px);
+
+            }
+
+
+            .panel-body {
+
+                padding: 18px;
+
+            }
+
+
+            .cover-upload {
+
+                min-height: 210px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        VULCÂNICO<span>.</span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <a
+            href="dashboard.html"
+            class="header-link"
+        >
+            Dashboard
+        </a>
+
+
+        <a
+            href="perfil.html"
+            class="header-link"
+        >
+            Meu Perfil
+        </a>
+
+
+        <a
+            href="pesquisa.html"
+            class="header-link"
+        >
+            Pesquisar
+        </a>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+
+    <div class="eyebrow">
+        Publicar música
+    </div>
+
+
+    <h1>
+
+        Coloque a sua<br>
+
+        <span>arte no mundo.</span>
+
+    </h1>
+
+
+    <p class="intro">
+
+        Envie a sua música para o Ecossistema Digital
+        Vulcânico. Depois da validação, a sua obra poderá
+        aparecer na pesquisa, no seu perfil e nas áreas
+        de destaque da plataforma.
+
+    </p>
+
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+
+
+        <div class="progress-step active">
+
+            <div class="progress-number">
+                01
+            </div>
+
+            <span>
+                Música
+            </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div class="progress-step">
+
+            <div class="progress-number">
+                02
+            </div>
+
+            <span>
+                Informações
+            </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div class="progress-step">
+
+            <div class="progress-number">
+                03
+            </div>
+
+            <span>
+                Pagamento
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="upload-layout">
+
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <h2>
+                    Informações da música
+                </h2>
+
+                <p>
+                    Preencha os dados exatamente como deseja
+                    que sejam apresentados publicamente.
+                </p>
+
+            </div>
+
+
+
+            <div class="panel-body">
+
+
+                <form
+                    id="musicForm"
+                >
+
+
+
+                    <!-- ÁUDIO -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Arquivo de áudio *
+                        </label>
+
+
+                        <label
+                            class="audio-upload"
+                            for="audio"
+                        >
+
+                            <div class="audio-icon">
+                                ♪
+                            </div>
+
+
+                            <div class="audio-info">
+
+                                <strong>
+                                    Selecionar música
+                                </strong>
+
+                                <span>
+                                    MP3, WAV ou FLAC · máximo 100 MB
+                                </span>
+
+                                <div
+                                    class="audio-name"
+                                    id="audioName"
+                                ></div>
+
+                            </div>
+
+
+                            <input
+                                type="file"
+                                id="audio"
+                                accept=".mp3,.wav,.flac,audio/mpeg,audio/wav,audio/flac"
+                            >
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- CAPA -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Capa da música *
+                        </label>
+
+
+                        <label
+                            class="cover-upload"
+                            for="cover"
+                        >
+
+                            <div
+                                class="cover-preview"
+                                id="coverPreview"
+                            ></div>
+
+
+                            <div class="cover-content">
+
+                                <div class="cover-icon">
+                                    +
+                                </div>
+
+
+                                <strong>
+                                    Adicionar capa
+                                </strong>
+
+
+                                <span>
+                                    JPG ou PNG · recomendado 3000 × 3000 px
+                                </span>
+
+                            </div>
+
+
+                            <input
+                                type="file"
+                                id="cover"
+                                accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+                            >
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- TÍTULO -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Título da música *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            maxlength="100"
+                            placeholder="Ex.: Não Dá"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- ARTISTA -->
+
+                    <div class="two-columns">
+
+
+                        <div class="form-group">
+
+                            <label for="artist">
+                                Nome artístico *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="artist"
+                                maxlength="80"
+                                placeholder="Nome do artista"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="producer">
+                                Produtor
+                            </label>
+
+                            <input
+                                type="text"
+                                id="producer"
+                                maxlength="80"
+                                placeholder="Nome do produtor"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- GÊNERO -->
+
+                    <div class="two-columns">
+
+
+                        <div class="form-group">
+
+                            <label for="genre">
+                                Género musical *
+                            </label>
+
+
+                            <select
+                                id="genre"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecionar género
+                                </option>
+
+                                <option>
+                                    Afrobeat
+                                </option>
+
+                                <option>
+                                    Amapiano
+                                </option>
+
+                                <option>
+                                    Trap
+                                </option>
+
+                                <option>
+                                    Drill
+                                </option>
+
+                                <option>
+                                    Hip-Hop
+                                </option>
+
+                                <option>
+                                    R&B
+                                </option>
+
+                                <option>
+                                    Kuduro
+                                </option>
+
+                                <option>
+                                    Kizomba
+                                </option>
+
+                                <option>
+                                    Zouk
+                                </option>
+
+                                <option>
+                                    Gospel
+                                </option>
+
+                                <option>
+                                    Pop
+                                </option>
+
+                                <option>
+                                    Rap
+                                </option>
+
+                                <option>
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="language">
+                                Idioma
+                            </label>
+
+
+                            <select
+                                id="language"
+                            >
+
+                                <option>
+                                    Português
+                                </option>
+
+                                <option>
+                                    Inglês
+                                </option>
+
+                                <option>
+                                    Francês
+                                </option>
+
+                                <option>
+                                    Espanhol
+                                </option>
+
+                                <option>
+                                    Lingala
+                                </option>
+
+                                <option>
+                                    Kimbundu
+                                </option>
+
+                                <option>
+                                    Umbundu
+                                </option>
+
+                                <option>
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- TIPO -->
+
+                    <div class="form-group">
+
+                        <label for="releaseType">
+                            Tipo de lançamento *
+                        </label>
+
+
+                        <select
+                            id="releaseType"
+                            required
+                        >
+
+                            <option value="">
+                                Selecionar
+                            </option>
+
+                            <option>
+                                Single
+                            </option>
+
+                            <option>
+                                EP
+                            </option>
+
+                            <option>
+                                Álbum
+                            </option>
+
+                            <option>
+                                Mixtape
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- PARTICIPAÇÕES -->
+
+                    <div class="form-group">
+
+                        <label for="featuring">
+                            Participações
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="featuring"
+                            placeholder="Ex.: Artista A, Artista B"
+                        >
+
+                        <div class="help">
+                            Separe vários artistas por vírgulas.
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESCRIÇÃO -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Descrição
+                        </label>
+
+
+                        <textarea
+                            id="description"
+                            maxlength="1000"
+                            placeholder="Conte brevemente a história ou conceito desta música..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- REDES -->
+
+                    <div class="form-group">
+
+                        <label for="social">
+                            Link externo
+                        </label>
+
+
+                        <input
+                            type="url"
+                            id="social"
+                            placeholder="https://instagram.com/..."
+                        >
+
+                        <div class="help">
+                            Opcional. Pode ser Instagram, YouTube,
+                            TikTok, Spotify ou outra página.
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DIREITOS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Direitos da obra *
+                        </label>
+
+
+                        <div class="checkbox-box">
+
+
+                            <div class="checkbox-line">
+
+                                <input
+                                    type="checkbox"
+                                    id="ownership"
+                                    required
+                                >
+
+                                <label for="ownership">
+
+                                    Confirmo que tenho autorização
+                                    e/ou direitos necessários para
+                                    publicar esta música na plataforma.
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="checkbox-line">
+
+                                <input
+                                    type="checkbox"
+                                    id="terms"
+                                    required
+                                >
+
+                                <label for="terms">
+
+                                    Aceito os termos de publicação
+                                    do Ecossistema Digital Vulcânico.
+
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TAXA -->
+
+                    <div class="form-group">
+
+                        <div class="fee-box">
+
+
+                            <div>
+
+                                <div class="fee-label">
+                                    Taxa de publicação
+                                </div>
+
+                                <div class="fee-description">
+                                    Validação e publicação da música
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="fee-value"
+                            >
+                                3.500 Kz
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn"
+                    >
+
+                        Continuar para pagamento →
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SIDE
+        ================================================== -->
+
+        <aside>
+
+
+            <div class="panel side-card">
+
+
+                <h3>
+                    Antes de publicar
+                </h3>
+
+
+                <ul class="side-list">
+
+
+                    <li>
+
+                        <div class="side-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Áudio de qualidade
+                            </strong>
+
+                            <p>
+                                Envie a versão final e masterizada
+                                sempre que possível.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li>
+
+                        <div class="side-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Capa profissional
+                            </strong>
+
+                            <p>
+                                Use uma imagem quadrada,
+                                nítida e relacionada à obra.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li>
+
+                        <div class="side-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Informações corretas
+                            </strong>
+
+                            <p>
+                                O título, artista, género e restantes
+                                dados serão usados no catálogo.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li>
+
+                        <div class="side-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Validação
+                            </strong>
+
+                            <p>
+                                A publicação ficará pendente até
+                                a confirmação do pagamento e análise.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                </ul>
+
+
+
+                <div class="highlight-box">
+
+                    <strong>
+                        Artistas em Destaque
+                    </strong>
+
+                    <p>
+
+                        Artistas que utilizam os serviços da
+                        plataforma poderão aparecer em áreas
+                        especiais de destaque, conforme os critérios
+                        definidos pelo Ecossistema.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="successModal"
+>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Música preparada
+        </h2>
+
+
+        <p>
+
+            Os dados da sua música foram registados.
+            Agora será necessário concluir o pagamento da
+            taxa de publicação e enviar o comprovativo.
+
+        </p>
+
+
+        <a
+            href="pagamentos.html"
+            class="modal-btn"
+        >
+            Ir para pagamento →
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+"use strict";
+
+
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const musicForm =
+    document.getElementById(
+        "musicForm"
+    );
+
+
+const audioInput =
+    document.getElementById(
+        "audio"
+    );
+
+
+const coverInput =
+    document.getElementById(
+        "cover"
+    );
+
+
+const audioName =
+    document.getElementById(
+        "audioName"
+    );
+
+
+const coverPreview =
+    document.getElementById(
+        "coverPreview"
+    );
+
+
+const successModal =
+    document.getElementById(
+        "successModal"
+    );
+
+
+
+/* =========================================================
+   ÁUDIO
+========================================================= */
+
+audioInput.addEventListener(
+    "change",
+    () => {
+
+        const file =
+            audioInput.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const maxSize =
+            100 * 1024 * 1024;
+
+
+        if (file.size > maxSize) {
+
+            alert(
+                "O áudio ultrapassa o limite de 100 MB."
+            );
+
+            audioInput.value = "";
+
+            return;
+
+        }
+
+
+        audioName.textContent =
+            "✓ " +
+            file.name;
+
+
+        audioName.style.display =
+            "block";
+
+    }
+);
+
+
+
+/* =========================================================
+   CAPA
+========================================================= */
+
+coverInput.addEventListener(
+    "change",
+    () => {
+
+        const file =
+            coverInput.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const maxSize =
+            10 * 1024 * 1024;
+
+
+        if (file.size > maxSize) {
+
+            alert(
+                "A capa ultrapassa o limite de 10 MB."
+            );
+
+            coverInput.value = "";
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event) {
+
+                coverPreview.style.backgroundImage =
+                    "url('" +
+                    event.target.result +
+                    "')";
+
+
+                coverPreview.style.display =
+                    "block";
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+
+/* =========================================================
+   AUTO-PREENCHER ARTISTA
+========================================================= */
+
+const savedUser =
+    JSON.parse(
+        localStorage.getItem(
+            "vulcanico_user"
+        )
+        || "null"
+    );
+
+
+if (savedUser) {
+
+    const artistInput =
+        document.getElementById(
+            "artist"
+        );
+
+
+    if (
+        savedUser.artistName
+        &&
+        !artistInput.value
+    ) {
+
+        artistInput.value =
+            savedUser.artistName;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+musicForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const audio =
+            audioInput.files[0];
+
+
+        const cover =
+            coverInput.files[0];
+
+
+        if (!audio) {
+
+            alert(
+                "Selecione o arquivo de áudio."
+            );
+
+            return;
+
+        }
+
+
+        if (!cover) {
+
+            alert(
+                "Selecione a capa da música."
+            );
+
+            return;
+
+        }
+
+
+        const title =
+            document
+                .getElementById(
+                    "title"
+                )
+                .value
+                .trim();
+
+
+        const artist =
+            document
+                .getElementById(
+                    "artist"
+                )
+                .value
+                .trim();
+
+
+        const genre =
+            document
+                .getElementById(
+                    "genre"
+                )
+                .value;
+
+
+        const releaseType =
+            document
+                .getElementById(
+                    "releaseType"
+                )
+                .value;
+
+
+        if (
+            !title ||
+            !artist ||
+            !genre ||
+            !releaseType
+        ) {
+
+            alert(
+                "Preencha todos os campos obrigatórios."
+            );
+
+            return;
+
+        }
+
+
+
+        /* =============================================
+           CRIAR PEDIDO
+        ============================================== */
+
+        const musicId =
+            "MUS-" +
+            Date.now();
+
+
+        const orderId =
+            "VUL-" +
+            Math.floor(
+                100000 +
+                Math.random() *
+                900000
+            );
+
+
+        const music = {
+
+            id:
+                musicId,
+
+            orderId,
+
+            title,
+
+            artist,
+
+            producer:
+                document
+                    .getElementById(
+                        "producer"
+                    )
+                    .value
+                    .trim(),
+
+            genre,
+
+            language:
+                document
+                    .getElementById(
+                        "language"
+                    )
+                    .value,
+
+            releaseType,
+
+            featuring:
+                document
+                    .getElementById(
+                        "featuring"
+                    )
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById(
+                        "description"
+                    )
+                    .value
+                    .trim(),
+
+            externalLink:
+                document
+                    .getElementById(
+                        "social"
+                    )
+                    .value
+                    .trim(),
+
+            audioFile:
+                audio.name,
+
+            coverFile:
+                cover.name,
+
+            fee:
+                3500,
+
+            status:
+                "aguardando_pagamento",
+
+            createdAt:
+                new Date()
+                    .toISOString()
+
+        };
+
+
+
+        /* =============================================
+           GUARDAR TEMPORARIAMENTE
+        ============================================== */
+
+        localStorage.setItem(
+            "vulcanico_music_upload",
+            JSON.stringify(
+                music
+            )
+        );
+
+
+        localStorage.setItem(
+            "vulcanico_order_id",
+            orderId
+        );
+
+
+        localStorage.setItem(
+            "vulcanico_payment_status",
+            "aguardando_pagamento"
+        );
+
+
+
+        /* =============================================
+           DADOS PARA PAGAMENTOS
+        ============================================== */
+
+        const paymentOrder = {
+
+            id:
+                orderId,
+
+            service:
+                "Publicação de música",
+
+            price:
+                3500,
+
+            musicId,
+
+            title,
+
+            artist,
+
+            status:
+                "aguardando_pagamento"
+
+        };
+
+
+        localStorage.setItem(
+            "vulcanico_payment_order",
+            JSON.stringify(
+                paymentOrder
+            )
+        );
+
+
+
+        /* =============================================
+           MODAL
+        ============================================== */
+
+        successModal.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".panel"
+    )
+    .forEach(
+        (panel, index) => {
+
+            panel.style.opacity = "0";
+
+            panel.style.transform =
+                "translateY(20px)";
+
+
+            setTimeout(
+                () => {
+
+                    panel.style.transition =
+                        "opacity .7s ease, transform .7s ease";
+
+
+                    panel.style.opacity =
+                        "1";
+
+
+                    panel.style.transform =
+                        "translateY(0)";
+
+                },
+                100 + index * 120
+            );
+
+        }
+    );
+
+</script>
+
+
+
+</body>
+
+</html>
+```

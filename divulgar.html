@@ -1,0 +1,2340 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Divulgue a sua música no Ecossistema Digital Vulcânico."
+    >
+
+    <title>Divulgar Música — VULCÂNICO</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        :root {
+            --lime: #d7ff3f;
+            --black: #050505;
+            --panel: #0c0c0c;
+            --border: rgba(255,255,255,.08);
+            --muted: rgba(255,255,255,.45);
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 5%,
+                    rgba(215,255,63,.08),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(215,255,63,.04),
+                    transparent 30%
+                ),
+                var(--black);
+
+            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            height: 72px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background:
+                rgba(5,5,5,.85);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .logo {
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: .13em;
+        }
+
+
+        .logo span {
+            color: var(--lime);
+        }
+
+
+        .header-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .header-link {
+
+            padding:
+                10px 13px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 6px;
+
+            color:
+                rgba(255,255,255,.5);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        .header-link:hover {
+
+            color: var(--lime);
+
+            border-color:
+                rgba(215,255,63,.3);
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            width:
+                min(1200px, 90%);
+
+            margin:
+                0 auto;
+
+            padding:
+                75px 0 120px;
+        }
+
+
+        .eyebrow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--lime);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--lime);
+
+            box-shadow:
+                0 0 15px
+                var(--lime);
+        }
+
+
+        h1 {
+
+            max-width: 800px;
+
+            margin:
+                18px 0 15px;
+
+            font-size:
+                clamp(
+                    48px,
+                    8vw,
+                    90px
+                );
+
+            line-height: .88;
+
+            letter-spacing: -.07em;
+        }
+
+
+        h1 span {
+            color: var(--lime);
+        }
+
+
+        .intro {
+
+            max-width: 620px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            margin-bottom: 55px;
+        }
+
+
+        /* =====================================================
+           LAYOUT
+        ===================================================== */
+
+        .layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 390px;
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+
+        .panel {
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            overflow: hidden;
+        }
+
+
+        .panel-header {
+
+            padding:
+                22px 25px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .panel-header h2 {
+
+            margin: 0;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+        }
+
+
+        .panel-header p {
+
+            margin:
+                7px 0 0;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 8px;
+
+            line-height: 1.6;
+        }
+
+
+        .panel-body {
+            padding: 25px;
+        }
+
+
+        /* =====================================================
+           MUSIC SELECT
+        ===================================================== */
+
+        .music-selector {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                65px 1fr;
+
+            gap: 15px;
+
+            align-items: center;
+
+            padding: 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+
+        .music-cover {
+
+            width: 65px;
+
+            height: 65px;
+
+            border-radius: 6px;
+
+            overflow: hidden;
+
+            background: #181818;
+        }
+
+
+        .music-cover img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .music-details strong {
+
+            display: block;
+
+            font-size: 11px;
+        }
+
+
+        .music-details span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 8px;
+        }
+
+
+        .change-music {
+
+            margin-top: 10px;
+
+            border: 0;
+
+            padding: 0;
+
+            background: transparent;
+
+            color: var(--lime);
+
+            cursor: pointer;
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-top: 25px;
+        }
+
+
+        .form-group:first-child {
+            margin-top: 0;
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: white;
+
+            padding:
+                14px;
+
+            font-size: 10px;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color:
+                rgba(215,255,63,.4);
+
+            background:
+                rgba(215,255,63,.025);
+        }
+
+
+        select option {
+            background: #111;
+        }
+
+
+        textarea {
+
+            min-height: 110px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+        }
+
+
+        .two-columns {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        .helper {
+
+            margin-top: 7px;
+
+            color:
+                rgba(255,255,255,.25);
+
+            font-size: 7px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           PLANS
+        ===================================================== */
+
+        .plans {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .plan {
+
+            position: relative;
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.02);
+
+            cursor: pointer;
+
+            transition:
+                .25s ease;
+        }
+
+
+        .plan:hover {
+
+            border-color:
+                rgba(215,255,63,.3);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .plan.active {
+
+            border-color:
+                var(--lime);
+
+            background:
+                rgba(215,255,63,.06);
+
+            box-shadow:
+                0 0 30px
+                rgba(215,255,63,.05);
+        }
+
+
+        .plan-badge {
+
+            position: absolute;
+
+            top: -9px;
+
+            right: 10px;
+
+            padding:
+                5px 8px;
+
+            border-radius: 4px;
+
+            background: var(--lime);
+
+            color: #050505;
+
+            font-size: 6px;
+
+            font-weight: 900;
+
+            letter-spacing: .06em;
+        }
+
+
+        .plan-name {
+
+            color:
+                rgba(255,255,255,.5);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        .plan-price {
+
+            margin:
+                12px 0;
+
+            font-size: 23px;
+
+            font-weight: 900;
+
+            letter-spacing: -.04em;
+        }
+
+
+        .plan-price small {
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+            font-weight: 500;
+        }
+
+
+        .plan-description {
+
+            min-height: 55px;
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 7px;
+
+            line-height: 1.7;
+        }
+
+
+        .plan-features {
+
+            margin: 15px 0 0;
+
+            padding: 15px 0 0;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.06);
+
+            list-style: none;
+        }
+
+
+        .plan-features li {
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.5);
+
+            font-size: 7px;
+        }
+
+
+        .plan-features li::before {
+
+            content: "✓";
+
+            margin-right: 6px;
+
+            color: var(--lime);
+
+            font-weight: 900;
+        }
+
+
+        /* =====================================================
+           PAYMENT NOTICE
+        ===================================================== */
+
+        .payment-notice {
+
+            display: flex;
+
+            gap: 12px;
+
+            padding: 15px;
+
+            margin-top: 25px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.13);
+
+            border-radius: 7px;
+
+            background:
+                rgba(215,255,63,.035);
+        }
+
+
+        .payment-icon {
+
+            flex-shrink: 0;
+
+            width: 32px;
+
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.1);
+
+            color: var(--lime);
+
+            font-size: 12px;
+        }
+
+
+        .payment-notice strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 8px;
+        }
+
+
+        .payment-notice p {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 7px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           RIGHT SUMMARY
+        ===================================================== */
+
+        .summary {
+
+            position: sticky;
+
+            top: 95px;
+        }
+
+
+        .summary-cover {
+
+            position: relative;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+        }
+
+
+        .summary-cover img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .summary-cover::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.8),
+                    transparent 60%
+                );
+        }
+
+
+        .summary-cover-info {
+
+            position: absolute;
+
+            z-index: 2;
+
+            left: 20px;
+
+            right: 20px;
+
+            bottom: 20px;
+        }
+
+
+        .summary-cover-info strong {
+
+            display: block;
+
+            font-size: 16px;
+        }
+
+
+        .summary-cover-info span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size: 8px;
+        }
+
+
+        .summary-body {
+
+            padding: 22px;
+        }
+
+
+        .summary-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .summary-row span {
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 8px;
+        }
+
+
+        .summary-row strong {
+
+            font-size: 9px;
+
+            text-align: right;
+        }
+
+
+        .summary-total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            padding-top: 20px;
+        }
+
+
+        .summary-total span {
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+        }
+
+
+        .summary-total strong {
+
+            color: var(--lime);
+
+            font-size: 25px;
+
+            letter-spacing: -.05em;
+        }
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            margin-top: 22px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background: var(--lime);
+
+            color: #050505;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(215,255,63,.12);
+        }
+
+
+        .secure {
+
+            margin-top: 12px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.2);
+
+            font-size: 7px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           SUCCESS
+        ===================================================== */
+
+        .success {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.8);
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        .success.active {
+
+            display: flex;
+        }
+
+
+        .success-box {
+
+            width:
+                min(500px, 100%);
+
+            padding: 40px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.2);
+
+            border-radius: 12px;
+
+            background: #0b0b0b;
+
+            text-align: center;
+        }
+
+
+        .success-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.1);
+
+            color: var(--lime);
+
+            font-size: 25px;
+        }
+
+
+        .success-box h2 {
+
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .success-box p {
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 9px;
+
+            line-height: 1.7;
+
+            margin:
+                12px 0 25px;
+        }
+
+
+        .success-btn {
+
+            display: inline-block;
+
+            padding:
+                13px 18px;
+
+            border-radius: 6px;
+
+            background: var(--lime);
+
+            color: #050505;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .layout {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .summary {
+
+                position: relative;
+
+                top: auto;
+
+                order: -1;
+            }
+
+
+            .summary-cover {
+
+                max-height: 400px;
+
+                aspect-ratio: 16 / 7;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .page {
+
+                padding-top: 50px;
+            }
+
+
+            .plans {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .two-columns {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .header-link {
+
+                display: none;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .page {
+
+                width:
+                    calc(100% - 30px);
+            }
+
+
+            .panel-body {
+
+                padding: 18px;
+            }
+
+
+            .panel-header {
+
+                padding: 18px;
+            }
+
+
+            h1 {
+
+                font-size: 50px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+        VULCÂNICO<span>.</span>
+    </a>
+
+
+    <div class="header-actions">
+
+        <a
+            href="dashboard.html"
+            class="header-link"
+        >
+            Dashboard
+        </a>
+
+        <a
+            href="perfil.html"
+            class="header-link"
+        >
+            Meu Perfil
+        </a>
+
+        <a
+            href="pesquisa.html"
+            class="header-link"
+        >
+            Pesquisar
+        </a>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+
+    <div class="eyebrow">
+        Promoção & alcance
+    </div>
+
+
+    <h1>
+
+        Faça a sua música<br>
+
+        <span>chegar mais longe.</span>
+
+    </h1>
+
+
+    <p class="intro">
+
+        Coloque o seu lançamento diante de novos ouvintes,
+        artistas e profissionais da indústria através do
+        Ecossistema Digital Vulcânico.
+
+    </p>
+
+
+
+    <div class="layout">
+
+
+        <!-- =================================================
+             FORMULÁRIO
+        ================================================== -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <h2>
+                    Solicitar divulgação
+                </h2>
+
+                <p>
+                    Preencha os dados abaixo para enviar
+                    a sua campanha.
+                </p>
+
+            </div>
+
+
+            <div class="panel-body">
+
+
+                <!-- MÚSICA -->
+
+                <div class="form-group">
+
+                    <label>
+                        Música a divulgar
+                    </label>
+
+
+                    <div
+                        class="music-selector"
+                        id="musicSelector"
+                    >
+
+                        <div class="music-cover">
+
+                            <img
+                                id="musicCover"
+                                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80"
+                                alt="Capa da música"
+                            >
+
+                        </div>
+
+
+                        <div class="music-details">
+
+                            <strong
+                                id="musicTitle"
+                            >
+                                Minha Nova Música
+                            </strong>
+
+                            <span
+                                id="musicArtist"
+                            >
+                                Seu nome artístico
+                            </span>
+
+                            <button
+                                type="button"
+                                class="change-music"
+                                id="changeMusic"
+                            >
+                                Escolher outra música
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NOME -->
+
+                <div class="form-group">
+
+                    <label for="artistName">
+                        Nome artístico
+                    </label>
+
+                    <input
+                        id="artistName"
+                        type="text"
+                        placeholder="Ex.: Vulcânico"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CONTACTOS -->
+
+                <div class="two-columns">
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Telefone
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            placeholder="9xx xxx xxx"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="seuemail@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- PLANO -->
+
+                <div class="form-group">
+
+                    <label>
+                        Escolha o plano
+                    </label>
+
+
+                    <div class="plans">
+
+
+                        <div
+                            class="plan active"
+                            data-plan="basic"
+                            data-price="3500"
+                        >
+
+                            <div class="plan-name">
+                                Basic
+                            </div>
+
+                            <div class="plan-price">
+                                3.500
+                                <small>Kz</small>
+                            </div>
+
+                            <div class="plan-description">
+
+                                Para artistas que querem
+                                começar a alcançar novos
+                                ouvintes.
+
+                            </div>
+
+                            <ul class="plan-features">
+
+                                <li>
+                                    Divulgação na plataforma
+                                </li>
+
+                                <li>
+                                    Presença na pesquisa
+                                </li>
+
+                                <li>
+                                    7 dias
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+
+                        <div
+                            class="plan"
+                            data-plan="pro"
+                            data-price="7500"
+                        >
+
+                            <span class="plan-badge">
+                                POPULAR
+                            </span>
+
+                            <div class="plan-name">
+                                Pro
+                            </div>
+
+                            <div class="plan-price">
+                                7.500
+                                <small>Kz</small>
+                            </div>
+
+                            <div class="plan-description">
+
+                                Maior exposição para
+                                lançamentos importantes.
+
+                            </div>
+
+                            <ul class="plan-features">
+
+                                <li>
+                                    Tudo do Basic
+                                </li>
+
+                                <li>
+                                    Área de destaque
+                                </li>
+
+                                <li>
+                                    15 dias
+                                </li>
+
+                                <li>
+                                    Mais visibilidade
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+
+                        <div
+                            class="plan"
+                            data-plan="premium"
+                            data-price="15000"
+                        >
+
+                            <div class="plan-name">
+                                Premium
+                            </div>
+
+                            <div class="plan-price">
+                                15.000
+                                <small>Kz</small>
+                            </div>
+
+                            <div class="plan-description">
+
+                                Campanha completa para
+                                máxima exposição.
+
+                            </div>
+
+                            <ul class="plan-features">
+
+                                <li>
+                                    Tudo do Pro
+                                </li>
+
+                                <li>
+                                    Destaque principal
+                                </li>
+
+                                <li>
+                                    30 dias
+                                </li>
+
+                                <li>
+                                    Promoção especial
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LINK -->
+
+                <div class="form-group">
+
+                    <label for="musicLink">
+                        Link da música
+                    </label>
+
+                    <input
+                        id="musicLink"
+                        type="url"
+                        placeholder="Spotify, YouTube, SoundCloud ou outro link"
+                    >
+
+                    <div class="helper">
+
+                        Se a música já estiver publicada
+                        em alguma plataforma, coloque o
+                        link aqui.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DESCRIÇÃO -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Informações adicionais
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Conte-nos brevemente sobre o lançamento, género, público-alvo ou qualquer informação importante..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- PAGAMENTO -->
+
+                <div class="payment-notice">
+
+                    <div class="payment-icon">
+                        $
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Pagamento após o envio
+                        </strong>
+
+                        <p>
+
+                            Depois de enviar a solicitação,
+                            serão apresentados os dados de
+                            pagamento por IBAN, Express e
+                            Unitel Money. O comprovativo deverá
+                            ser enviado para validação.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <button
+                    type="button"
+                    class="submit-btn"
+                    id="submitCampaign"
+                >
+                    Continuar para pagamento →
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESUMO
+        ================================================== -->
+
+        <aside class="panel summary">
+
+
+            <div class="summary-cover">
+
+
+                <img
+                    id="summaryCover"
+                    src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80"
+                    alt="Capa"
+                >
+
+
+                <div class="summary-cover-info">
+
+                    <strong id="summaryTitle">
+                        Minha Nova Música
+                    </strong>
+
+                    <span id="summaryArtist">
+                        Seu nome artístico
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="summary-body">
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Plano
+                    </span>
+
+                    <strong id="summaryPlan">
+                        Basic
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Duração
+                    </span>
+
+                    <strong id="summaryDuration">
+                        7 dias
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Exposição
+                    </span>
+
+                    <strong id="summaryExposure">
+                        Plataforma
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="summaryPrice">
+                        3.500 Kz
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    id="submitCampaign2"
+                >
+                    Solicitar divulgação
+                </button>
+
+
+                <div class="secure">
+
+                    🔒 O seu pedido será analisado
+                    pela equipa Vulcânico antes da
+                    campanha ser ativada.
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     SUCCESS MODAL
+========================================================= -->
+
+<div
+    class="success"
+    id="successModal"
+>
+
+
+    <div class="success-box">
+
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Solicitação criada
+        </h2>
+
+
+        <p>
+
+            A sua campanha foi preparada.
+            Agora deverá efetuar o pagamento e
+            enviar o comprovativo para que a equipa
+            Vulcânico possa validar e ativar a divulgação.
+
+        </p>
+
+
+        <a
+            href="pagamentos.html"
+            class="success-btn"
+        >
+            Ir para pagamentos →
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+"use strict";
+
+
+/* =========================================================
+   PLANOS
+========================================================= */
+
+const plans =
+    document.querySelectorAll(
+        ".plan"
+    );
+
+
+let selectedPlan = {
+
+    name: "Basic",
+
+    price: 3500,
+
+    duration: "7 dias",
+
+    exposure: "Plataforma"
+
+};
+
+
+
+const durationMap = {
+
+    basic: "7 dias",
+
+    pro: "15 dias",
+
+    premium: "30 dias"
+
+};
+
+
+const exposureMap = {
+
+    basic: "Plataforma",
+
+    pro: "Área de destaque",
+
+    premium: "Destaque principal"
+
+};
+
+
+/* =========================================================
+   SELEÇÃO DO PLANO
+========================================================= */
+
+plans.forEach(
+    plan => {
+
+        plan.addEventListener(
+            "click",
+            () => {
+
+
+                plans.forEach(
+                    item =>
+                        item.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                plan.classList.add(
+                    "active"
+                );
+
+
+                const type =
+                    plan.dataset.plan;
+
+
+                selectedPlan = {
+
+                    name:
+                        plan
+                            .querySelector(
+                                ".plan-name"
+                            )
+                            .textContent
+                            .trim(),
+
+                    price:
+                        Number(
+                            plan.dataset.price
+                        ),
+
+                    duration:
+                        durationMap[type],
+
+                    exposure:
+                        exposureMap[type]
+
+                };
+
+
+                updateSummary();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ATUALIZAR RESUMO
+========================================================= */
+
+function formatPrice(
+    value
+) {
+
+    return new Intl.NumberFormat(
+        "pt-AO"
+    ).format(value) + " Kz";
+
+}
+
+
+function updateSummary() {
+
+    document
+        .getElementById(
+            "summaryPlan"
+        )
+        .textContent =
+            selectedPlan.name;
+
+
+    document
+        .getElementById(
+            "summaryDuration"
+        )
+        .textContent =
+            selectedPlan.duration;
+
+
+    document
+        .getElementById(
+            "summaryExposure"
+        )
+        .textContent =
+            selectedPlan.exposure;
+
+
+    document
+        .getElementById(
+            "summaryPrice"
+        )
+        .textContent =
+            formatPrice(
+                selectedPlan.price
+            );
+
+}
+
+
+updateSummary();
+
+
+/* =========================================================
+   ARTISTA
+========================================================= */
+
+const artistInput =
+    document.getElementById(
+        "artistName"
+    );
+
+
+artistInput.addEventListener(
+    "input",
+    () => {
+
+        const value =
+            artistInput.value.trim()
+            ||
+            "Seu nome artístico";
+
+
+        document
+            .getElementById(
+                "musicArtist"
+            )
+            .textContent =
+                value;
+
+
+        document
+            .getElementById(
+                "summaryArtist"
+            )
+            .textContent =
+                value;
+
+    }
+);
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+const musicTitle =
+    document.getElementById(
+        "musicTitle"
+    );
+
+
+musicTitle.addEventListener(
+    "click",
+    () => {}
+);
+
+
+/* =========================================================
+   ESCOLHER OUTRA MÚSICA
+========================================================= */
+
+document
+    .getElementById(
+        "changeMusic"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            /*
+             * FUTURO:
+             *
+             * Aqui abriremos um modal
+             * com as músicas carregadas
+             * pelo artista.
+             */
+
+            alert(
+                "No sistema final, aqui será aberta a sua biblioteca de músicas."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   FORM SUBMIT
+========================================================= */
+
+function submitCampaign() {
+
+
+    const artist =
+        artistInput.value.trim();
+
+
+    const phone =
+        document
+            .getElementById(
+                "phone"
+            )
+            .value.trim();
+
+
+    const email =
+        document
+            .getElementById(
+                "email"
+            )
+            .value.trim();
+
+
+    if (!artist) {
+
+        alert(
+            "Digite o seu nome artístico."
+        );
+
+        artistInput.focus();
+
+        return;
+
+    }
+
+
+    if (!phone) {
+
+        alert(
+            "Digite o seu número de telefone."
+        );
+
+        document
+            .getElementById(
+                "phone"
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    if (!email) {
+
+        alert(
+            "Digite o seu e-mail."
+        );
+
+        document
+            .getElementById(
+                "email"
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    const campaign = {
+
+        id:
+            "ADV-" +
+            Date.now(),
+
+        artist,
+
+        phone,
+
+        email,
+
+        plan:
+            selectedPlan.name,
+
+        price:
+            selectedPlan.price,
+
+        duration:
+            selectedPlan.duration,
+
+        exposure:
+            selectedPlan.exposure,
+
+        link:
+            document
+                .getElementById(
+                    "musicLink"
+                )
+                .value
+                .trim(),
+
+        description:
+            document
+                .getElementById(
+                    "description"
+                )
+                .value
+                .trim(),
+
+        status:
+            "aguardando_pagamento",
+
+        createdAt:
+            new Date()
+                .toISOString()
+
+    };
+
+
+    /*
+     * TEMPORARIAMENTE:
+     * guardar no navegador.
+     *
+     * FUTURO:
+     * enviar para o backend/database.
+     */
+
+    localStorage.setItem(
+        "vulcanico_campaign",
+        JSON.stringify(
+            campaign
+        )
+    );
+
+
+    document
+        .getElementById(
+            "successModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+document
+    .getElementById(
+        "submitCampaign"
+    )
+    .addEventListener(
+        "click",
+        submitCampaign
+    );
+
+
+document
+    .getElementById(
+        "submitCampaign2"
+    )
+    .addEventListener(
+        "click",
+        submitCampaign
+    );
+
+
+/* =========================================================
+   ANIMAÇÃO DE ENTRADA
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".panel"
+    )
+    .forEach(
+        (panel, index) => {
+
+            panel.style.opacity = "0";
+
+            panel.style.transform =
+                "translateY(20px)";
+
+            setTimeout(
+                () => {
+
+                    panel.style.transition =
+                        "opacity .7s ease, transform .7s ease";
+
+                    panel.style.opacity =
+                        "1";
+
+                    panel.style.transform =
+                        "translateY(0)";
+
+                },
+                100 + index * 120
+            );
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
+```

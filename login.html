@@ -1,0 +1,1520 @@
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Entre no Ecossistema Digital Vulcânico."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080808"
+    >
+
+    <title>Entrar — VULCÂNICO</title>
+
+
+    <!-- CSS PRINCIPAL -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           VULCÂNICO — LOGIN
+           ===================================================== */
+
+        .auth-page {
+
+            min-height: 100vh;
+            min-height: 100svh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 40px 20px;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(215,255,63,.08),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(215,255,63,.05),
+                    transparent 30%
+                ),
+
+                #080808;
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+           ===================================================== */
+
+        .auth-background {
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+        }
+
+
+        .auth-grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .035;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                );
+
+            background-size: 60px 60px;
+        }
+
+
+        .auth-glow {
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(215,255,63,.08),
+                    transparent 70%
+                );
+
+            filter: blur(30px);
+        }
+
+
+        .auth-glow.one {
+
+            top: -250px;
+            left: -250px;
+        }
+
+
+        .auth-glow.two {
+
+            right: -250px;
+            bottom: -250px;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+           ===================================================== */
+
+        .auth-container {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        /* =====================================================
+           BRAND
+           ===================================================== */
+
+        .auth-brand {
+
+            text-align: center;
+
+            margin-bottom: 32px;
+        }
+
+
+        .auth-brand a {
+
+            text-decoration: none;
+        }
+
+
+        .auth-brand-name {
+
+            font-size: 26px;
+
+            font-weight: 900;
+
+            letter-spacing: .18em;
+
+            color: #ffffff;
+        }
+
+
+        .auth-brand-name span {
+
+            color: #d7ff3f;
+        }
+
+
+        .auth-brand p {
+
+            margin-top: 10px;
+
+            font-size: 13px;
+
+            color:
+                rgba(255,255,255,.45);
+        }
+
+
+        /* =====================================================
+           CARD
+           ===================================================== */
+
+        .auth-card {
+
+            padding: 45px;
+
+            border:
+
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 24px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.065),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter:
+                blur(30px);
+
+            -webkit-backdrop-filter:
+                blur(30px);
+
+            box-shadow:
+
+                0 30px 100px
+                rgba(0,0,0,.5);
+        }
+
+
+        /* =====================================================
+           HEADING
+           ===================================================== */
+
+        .auth-heading {
+
+            margin-bottom: 30px;
+        }
+
+
+        .auth-heading .eyebrow {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .18em;
+
+            color: #d7ff3f;
+        }
+
+
+        .auth-heading h1 {
+
+            margin: 0;
+
+            font-size:
+
+                clamp(
+                    32px,
+                    5vw,
+                    46px
+                );
+
+            line-height: 1;
+
+            letter-spacing: -.04em;
+
+            color: #ffffff;
+        }
+
+
+        .auth-heading p {
+
+            margin-top: 15px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color:
+                rgba(255,255,255,.5);
+        }
+
+
+        /* =====================================================
+           FORM
+           ===================================================== */
+
+        .auth-form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 19px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .form-group label {
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .1em;
+
+            color:
+                rgba(255,255,255,.6);
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            min-height: 55px;
+
+            padding:
+                0 16px;
+
+            border:
+
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 12px;
+
+            outline: none;
+
+            color: #ffffff;
+
+            background:
+                rgba(255,255,255,.045);
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition:
+
+                border-color .25s ease,
+
+                background .25s ease,
+
+                box-shadow .25s ease;
+        }
+
+
+        .form-group input::placeholder {
+
+            color:
+                rgba(255,255,255,.25);
+        }
+
+
+        .form-group input:focus {
+
+            border-color:
+                rgba(215,255,63,.55);
+
+            background:
+                rgba(215,255,63,.035);
+
+            box-shadow:
+
+                0 0 0 3px
+                rgba(215,255,63,.07);
+        }
+
+
+        /* =====================================================
+           PASSWORD
+           ===================================================== */
+
+        .password-wrapper {
+
+            position: relative;
+        }
+
+
+        .password-wrapper input {
+
+            padding-right: 70px;
+        }
+
+
+        .toggle-password {
+
+            position: absolute;
+
+            top: 50%;
+            right: 12px;
+
+            transform:
+                translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                rgba(255,255,255,.4);
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .05em;
+
+            padding: 8px;
+        }
+
+
+        .toggle-password:hover {
+
+            color: #d7ff3f;
+        }
+
+
+        /* =====================================================
+           FORM OPTIONS
+           ===================================================== */
+
+        .form-options {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .remember {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+
+            color:
+                rgba(255,255,255,.4);
+        }
+
+
+        .remember input {
+
+            width: 16px;
+            height: 16px;
+
+            accent-color:
+                #d7ff3f;
+
+            cursor: pointer;
+        }
+
+
+        .forgot-password {
+
+            font-size: 12px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            text-decoration: none;
+        }
+
+
+        .forgot-password:hover {
+
+            color: #d7ff3f;
+        }
+
+
+        /* =====================================================
+           SUBMIT
+           ===================================================== */
+
+        .auth-submit {
+
+            width: 100%;
+
+            min-height: 58px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #d7ff3f;
+
+            color: #080808;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+
+            cursor: pointer;
+
+            transition:
+
+                transform .25s ease,
+
+                box-shadow .25s ease,
+
+                opacity .25s ease;
+        }
+
+
+        .auth-submit:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+
+                0 15px 35px
+                rgba(215,255,63,.16);
+        }
+
+
+        .auth-submit.loading {
+
+            opacity: .65;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           ERROR
+           ===================================================== */
+
+        .form-error {
+
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 13px 15px;
+
+            border:
+
+                1px solid
+                rgba(255,80,80,.2);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,80,80,.06);
+
+            color:
+                rgba(255,140,140,.9);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .form-error.visible {
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           SUCCESS
+           ===================================================== */
+
+        .form-success {
+
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 13px 15px;
+
+            border:
+
+                1px solid
+                rgba(215,255,63,.2);
+
+            border-radius: 10px;
+
+            background:
+                rgba(215,255,63,.05);
+
+            color:
+                rgba(255,255,255,.8);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .form-success.visible {
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           DIVIDER
+           ===================================================== */
+
+        .auth-divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin: 25px 0;
+        }
+
+
+        .auth-divider::before,
+        .auth-divider::after {
+
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,.08);
+        }
+
+
+        .auth-divider span {
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+
+            color:
+                rgba(255,255,255,.25);
+        }
+
+
+        /* =====================================================
+           CADASTRO
+           ===================================================== */
+
+        .auth-register {
+
+            text-align: center;
+
+            font-size: 13px;
+
+            color:
+                rgba(255,255,255,.45);
+        }
+
+
+        .auth-register a {
+
+            color: #ffffff;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+
+        .auth-register a:hover {
+
+            color: #d7ff3f;
+        }
+
+
+        /* =====================================================
+           BACK
+           ===================================================== */
+
+        .back-home {
+
+            display: block;
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .1em;
+
+            color:
+                rgba(255,255,255,.3);
+
+            text-decoration: none;
+        }
+
+
+        .back-home:hover {
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 550px) {
+
+            .auth-page {
+
+                padding:
+                    30px 15px;
+            }
+
+
+            .auth-card {
+
+                padding:
+                    30px 20px;
+
+                border-radius: 18px;
+            }
+
+
+            .auth-heading h1 {
+
+                font-size: 35px;
+            }
+
+
+            .form-options {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+
+        @media (max-width: 360px) {
+
+            .auth-card {
+
+                padding:
+                    25px 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN
+         ===================================================== -->
+
+    <main class="auth-page">
+
+
+        <!-- BACKGROUND -->
+
+        <div
+            class="auth-background"
+            aria-hidden="true"
+        >
+
+            <div class="auth-grid"></div>
+
+            <div class="auth-glow one"></div>
+
+            <div class="auth-glow two"></div>
+
+        </div>
+
+
+        <!-- CONTAINER -->
+
+        <div class="auth-container">
+
+
+            <!-- BRAND -->
+
+            <div class="auth-brand">
+
+                <a href="../index.html">
+
+                    <div class="auth-brand-name">
+
+                        VULCÂNICO<span>.</span>
+
+                    </div>
+
+                </a>
+
+                <p>
+
+                    Onde artistas criam,
+                    conectam e crescem.
+
+                </p>
+
+            </div>
+
+
+            <!-- CARD -->
+
+            <section class="auth-card">
+
+
+                <!-- HEADING -->
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+
+                        Bem-vindo de volta
+
+                    </span>
+
+                    <h1>
+
+                        Entre na sua conta.
+
+                    </h1>
+
+                    <p>
+
+                        Continue a criar, divulgar
+                        e conectar-se ao ecossistema.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    class="form-error"
+                    id="loginError"
+                    role="alert"
+                ></div>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    class="form-success"
+                    id="loginSuccess"
+                    role="status"
+                ></div>
+
+
+                <!-- FORM -->
+
+                <form
+                    class="auth-form"
+                    id="loginForm"
+                    novalidate
+                >
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+
+                            E-mail
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            name="email"
+                            placeholder="seuemail@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="loginPassword">
+
+                            Senha
+
+                        </label>
+
+                        <div
+                            class="password-wrapper"
+                        >
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                placeholder="Digite a sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                data-target="loginPassword"
+                            >
+
+                                Mostrar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPTIONS -->
+
+                    <div class="form-options">
+
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="remember"
+                            >
+
+                            <span>
+
+                                Lembrar-me
+
+                            </span>
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                            id="forgotPassword"
+                        >
+
+                            Esqueci a senha
+
+                        </a>
+
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                        id="loginButton"
+                    >
+
+                        Entrar na plataforma
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- DIVIDER -->
+
+                <div class="auth-divider">
+
+                    <span>
+
+                        Novo no Vulcânico?
+
+                    </span>
+
+                </div>
+
+
+                <!-- REGISTER -->
+
+                <div class="auth-register">
+
+                    Ainda não possui uma conta?
+
+                    <a href="cadastro.html">
+
+                        Criar conta
+
+                    </a>
+
+                </div>
+
+
+                <!-- HOME -->
+
+                <a
+                    href="../index.html"
+                    class="back-home"
+                >
+
+                    ← Voltar para o início
+
+                </a>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         LOGIN JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+        "use strict";
+
+
+        /* =================================================
+           ELEMENTOS
+           ================================================= */
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+        const loginEmail =
+            document.getElementById(
+                "loginEmail"
+            );
+
+        const loginPassword =
+            document.getElementById(
+                "loginPassword"
+            );
+
+        const loginButton =
+            document.getElementById(
+                "loginButton"
+            );
+
+        const loginError =
+            document.getElementById(
+                "loginError"
+            );
+
+        const loginSuccess =
+            document.getElementById(
+                "loginSuccess"
+            );
+
+
+        /* =================================================
+           MOSTRAR / ESCONDER SENHA
+           ================================================= */
+
+        document
+            .querySelectorAll(
+                ".toggle-password"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            document.getElementById(
+                                button.dataset.target
+                            );
+
+                        if (!target)
+                            return;
+
+
+                        if (
+                            target.type ===
+                            "password"
+                        ) {
+
+                            target.type =
+                                "text";
+
+                            button.textContent =
+                                "Ocultar";
+
+                        } else {
+
+                            target.type =
+                                "password";
+
+                            button.textContent =
+                                "Mostrar";
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =================================================
+           MENSAGENS
+           ================================================= */
+
+        function clearMessages() {
+
+            loginError.classList
+                .remove("visible");
+
+            loginSuccess.classList
+                .remove("visible");
+
+            loginError.textContent = "";
+
+            loginSuccess.textContent = "";
+
+        }
+
+
+        function showError(message) {
+
+            loginError.textContent =
+                message;
+
+            loginError.classList
+                .add("visible");
+
+        }
+
+
+        /* =================================================
+           ESQUECI A SENHA
+           ================================================= */
+
+        document
+            .getElementById(
+                "forgotPassword"
+            )
+            .addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+
+                    const email =
+                        loginEmail.value.trim();
+
+
+                    if (!email) {
+
+                        showError(
+                            "Digite primeiro o seu e-mail para podermos iniciar a recuperação da conta."
+                        );
+
+                        loginEmail.focus();
+
+                        return;
+
+                    }
+
+
+                    loginSuccess.textContent =
+                        "A recuperação de senha será conectada ao sistema de e-mail do Vulcânico.";
+
+                    loginSuccess.classList
+                        .add("visible");
+
+                }
+            );
+
+
+        /* =================================================
+           LOGIN
+           ================================================= */
+
+        loginForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+                clearMessages();
+
+
+                const email =
+                    loginEmail.value.trim();
+
+                const password =
+                    loginPassword.value;
+
+
+                /* =========================================
+                   VALIDAÇÕES
+                   ========================================= */
+
+                if (!email) {
+
+                    showError(
+                        "Digite o seu e-mail."
+                    );
+
+                    loginEmail.focus();
+
+                    return;
+
+                }
+
+
+                const emailRegex =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (
+                    !emailRegex.test(email)
+                ) {
+
+                    showError(
+                        "Digite um e-mail válido."
+                    );
+
+                    loginEmail.focus();
+
+                    return;
+
+                }
+
+
+                if (!password) {
+
+                    showError(
+                        "Digite a sua senha."
+                    );
+
+                    loginPassword.focus();
+
+                    return;
+
+                }
+
+
+                /* =========================================
+                   LOADING
+                   ========================================= */
+
+                loginButton.classList
+                    .add("loading");
+
+                loginButton.textContent =
+                    "A verificar...";
+
+
+                /*
+                   =================================================
+                   AQUI SERÁ CONECTADA A API REAL.
+
+                   Exemplo:
+
+                   const response = await fetch(
+                       "/api/auth/login",
+                       {
+                           method: "POST",
+                           headers: {
+                               "Content-Type":
+                                   "application/json"
+                           },
+                           body: JSON.stringify({
+                               email,
+                               password
+                           })
+                       }
+                   );
+
+                   =================================================
+                */
+
+
+                try {
+
+                    /*
+                       Simulação temporária.
+
+                       O backend real substituirá isto.
+                    */
+
+                    await new Promise(
+                        resolve =>
+                            setTimeout(
+                                resolve,
+                                1000
+                            )
+                    );
+
+
+                    /*
+                       Verifica se existe uma conta
+                       temporária criada pelo cadastro.
+                    */
+
+                    const savedUser =
+                        localStorage.getItem(
+                            "vulcanico_pending_user"
+                        );
+
+
+                    if (!savedUser) {
+
+                        showError(
+                            "Esta demonstração ainda não possui uma conta registada. O sistema real de autenticação será conectado ao backend."
+                        );
+
+                        loginButton.classList
+                            .remove("loading");
+
+                        loginButton.textContent =
+                            "Entrar na plataforma";
+
+                        return;
+
+                    }
+
+
+                    const user =
+                        JSON.parse(
+                            savedUser
+                        );
+
+
+                    /*
+                       Verificação temporária.
+
+                       NÃO representa autenticação
+                       real e será substituída pelo
+                       servidor.
+                    */
+
+                    if (
+                        user.email !==
+                        email
+                    ) {
+
+                        showError(
+                            "Não encontramos uma conta com este e-mail."
+                        );
+
+                        loginButton.classList
+                            .remove("loading");
+
+                        loginButton.textContent =
+                            "Entrar na plataforma";
+
+                        return;
+
+                    }
+
+
+                    /*
+                       Sessão temporária.
+                    */
+
+                    localStorage.setItem(
+                        "vulcanico_logged_user",
+                        JSON.stringify(
+                            user
+                        )
+                    );
+
+
+                    loginSuccess.textContent =
+                        `Bem-vindo, ${user.artistName || user.fullName}. A entrar no seu espaço...`;
+
+                    loginSuccess.classList
+                        .add("visible");
+
+
+                    loginButton.textContent =
+                        "A entrar...";
+
+
+                    /*
+                       Dashboard será criado
+                       na próxima etapa.
+                    */
+
+                    setTimeout(
+                        () => {
+
+                            window.location.href =
+                                "dashboard.html";
+
+                        },
+                        900
+                    );
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    showError(
+                        "Ocorreu um erro ao tentar entrar. Tente novamente."
+                    );
+
+
+                    loginButton.classList
+                        .remove("loading");
+
+                    loginButton.textContent =
+                        "Entrar na plataforma";
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           ENTER / SUBMIT
+           ================================================= */
+
+        loginPassword.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    loginForm.requestSubmit();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+</html>
+```

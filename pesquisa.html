@@ -1,0 +1,3060 @@
+```html
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pesquise músicas, instrumentais, artistas e designers no Ecossistema Digital Vulcânico."
+    >
+
+    <meta
+        name="theme-color"
+        content="#070707"
+    >
+
+    <title>Pesquisa — VULCÂNICO</title>
+
+
+    <!-- CSS PRINCIPAL -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           VULCÂNICO — PESQUISA
+           ===================================================== */
+
+        :root {
+
+            --search-bg: #070707;
+
+            --search-panel: #0d0d0d;
+
+            --search-border:
+                rgba(255,255,255,.08);
+
+            --search-text: #ffffff;
+
+            --search-muted:
+                rgba(255,255,255,.45);
+
+            --search-green: #d7ff3f;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background:
+                var(--search-bg);
+
+            color:
+                var(--search-text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        .search-header {
+
+            width: 100%;
+
+            height: 78px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 5%;
+
+            border-bottom:
+                1px solid
+                var(--search-border);
+
+            background:
+                rgba(7,7,7,.82);
+
+            backdrop-filter:
+                blur(25px);
+
+            -webkit-backdrop-filter:
+                blur(25px);
+        }
+
+
+        .search-logo {
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: .15em;
+        }
+
+
+        .search-logo span {
+
+            color:
+                var(--search-green);
+        }
+
+
+        .search-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+
+        .search-nav a {
+
+            font-size: 11px;
+
+            text-decoration: none;
+
+            color:
+                rgba(255,255,255,.55);
+
+            transition:
+                color .2s ease;
+        }
+
+
+        .search-nav a:hover,
+        .search-nav a.active {
+
+            color:
+                var(--search-green);
+        }
+
+
+        .search-login {
+
+            min-height: 38px;
+
+            padding:
+                0 16px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+        }
+
+
+        .search-login:hover {
+
+            border-color:
+                var(--search-green);
+
+            color:
+                var(--search-green);
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .search-hero {
+
+            min-height: 440px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                70px 20px;
+
+            text-align: center;
+
+            border-bottom:
+                1px solid
+                var(--search-border);
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(215,255,63,.08),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(215,255,63,.04),
+                    transparent 28%
+                );
+        }
+
+
+        .search-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .035;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.6) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.6) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                60px 60px;
+
+            pointer-events: none;
+        }
+
+
+        .search-hero-content {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .search-eyebrow {
+
+            display: block;
+
+            margin-bottom: 18px;
+
+            color:
+                var(--search-green);
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .2em;
+        }
+
+
+        .search-hero h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    44px,
+                    8vw,
+                    88px
+                );
+
+            line-height: .92;
+
+            letter-spacing:
+                -.065em;
+        }
+
+
+        .search-hero h1 span {
+
+            color:
+                var(--search-green);
+        }
+
+
+        .search-hero p {
+
+            max-width: 600px;
+
+            margin:
+                22px auto 35px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        /* =====================================================
+           SEARCH BOX
+           ===================================================== */
+
+        .global-search {
+
+            width: 100%;
+
+            max-width: 760px;
+
+            height: 66px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding:
+                0 9px 0 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.35);
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .global-search:focus-within {
+
+            border-color:
+                rgba(215,255,63,.45);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.45),
+
+                0 0 0 4px
+                rgba(215,255,63,.05);
+        }
+
+
+        .global-search-icon {
+
+            flex-shrink: 0;
+
+            font-size: 20px;
+
+            color:
+                rgba(255,255,255,.4);
+        }
+
+
+        .global-search input {
+
+            width: 100%;
+
+            min-width: 0;
+
+            height: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 14px;
+        }
+
+
+        .global-search input::placeholder {
+
+            color:
+                rgba(255,255,255,.3);
+        }
+
+
+        .global-search button {
+
+            flex-shrink: 0;
+
+            height: 48px;
+
+            padding:
+                0 20px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background:
+                var(--search-green);
+
+            color:
+                #080808;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .1em;
+
+            cursor: pointer;
+        }
+
+
+        .global-search button:hover {
+
+            box-shadow:
+                0 8px 25px
+                rgba(215,255,63,.15);
+        }
+
+
+        /* =====================================================
+           FILTERS
+           ===================================================== */
+
+        .search-filters {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 22px;
+        }
+
+
+        .filter-button {
+
+            min-height: 34px;
+
+            padding:
+                0 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 100px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            background:
+                rgba(255,255,255,.025);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .filter-button:hover {
+
+            color:
+                #ffffff;
+
+            border-color:
+                rgba(255,255,255,.15);
+        }
+
+
+        .filter-button.active {
+
+            color:
+                #080808;
+
+            border-color:
+                var(--search-green);
+
+            background:
+                var(--search-green);
+        }
+
+
+        /* =====================================================
+           CONTENT
+           ===================================================== */
+
+        .search-content {
+
+            width: 100%;
+
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding:
+                65px 5% 100px;
+        }
+
+
+        /* =====================================================
+           RESULT HEADER
+           ===================================================== */
+
+        .results-header {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .results-header small {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .16em;
+
+            color:
+                var(--search-green);
+        }
+
+
+        .results-header h2 {
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    25px,
+                    4vw,
+                    40px
+                );
+
+            letter-spacing:
+                -.045em;
+        }
+
+
+        .result-count {
+
+            font-size: 11px;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        /* =====================================================
+           RESULT SECTIONS
+           ===================================================== */
+
+        .results-section {
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-title h3 {
+
+            margin: 0;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .1em;
+        }
+
+
+        .section-title a {
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+            text-decoration: none;
+
+            color:
+                var(--search-green);
+        }
+
+
+        /* =====================================================
+           MUSIC GRID
+           ===================================================== */
+
+        .music-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0,1fr));
+
+            gap: 15px;
+        }
+
+
+        .music-card {
+
+            min-width: 0;
+
+            padding: 13px;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 13px;
+
+            background:
+                var(--search-panel);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease;
+        }
+
+
+        .music-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(215,255,63,.2);
+
+            background:
+                #101010;
+        }
+
+
+        .music-cover {
+
+            aspect-ratio: 1;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #141414,
+                    #292929
+                );
+        }
+
+
+        .music-cover::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(215,255,63,.12),
+                    transparent 60%
+                );
+        }
+
+
+        .music-cover-icon {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 26px;
+
+            color:
+                rgba(255,255,255,.75);
+        }
+
+
+        .music-info {
+
+            padding:
+                13px 2px 4px;
+        }
+
+
+        .music-info strong {
+
+            display: block;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+
+            font-size: 12px;
+        }
+
+
+        .music-info span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 10px;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        .music-meta {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-top: 11px;
+        }
+
+
+        .music-meta small {
+
+            font-size: 9px;
+
+            color:
+                rgba(255,255,255,.3);
+        }
+
+
+        .play-button {
+
+            width: 31px;
+            height: 31px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 50%;
+
+            background:
+                transparent;
+
+            color:
+                #ffffff;
+
+            cursor: pointer;
+        }
+
+
+        .play-button:hover {
+
+            color:
+                #080808;
+
+            border-color:
+                var(--search-green);
+
+            background:
+                var(--search-green);
+        }
+
+
+        /* =====================================================
+           BEATS
+           ===================================================== */
+
+        .beat-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0,1fr));
+
+            gap: 10px;
+        }
+
+
+        .beat-card {
+
+            min-width: 0;
+
+            min-height: 82px;
+
+            padding:
+                13px 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 11px;
+
+            background:
+                var(--search-panel);
+
+            transition:
+                background .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .beat-card:hover {
+
+            border-color:
+                rgba(215,255,63,.18);
+
+            background:
+                #101010;
+        }
+
+
+        .beat-art {
+
+            width: 55px;
+            height: 55px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #191919,
+                    #2a2a2a
+                );
+        }
+
+
+        .beat-info {
+
+            min-width: 0;
+
+            flex: 1;
+        }
+
+
+        .beat-info strong {
+
+            display: block;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+
+            font-size: 11px;
+        }
+
+
+        .beat-info span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 9px;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        .beat-price {
+
+            margin-top: 7px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            color:
+                var(--search-green);
+        }
+
+
+        .beat-button {
+
+            min-width: 34px;
+
+            height: 34px;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 50%;
+
+            color: #ffffff;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .beat-button:hover {
+
+            color: #080808;
+
+            border-color:
+                var(--search-green);
+
+            background:
+                var(--search-green);
+        }
+
+
+        /* =====================================================
+           ARTISTS
+           ===================================================== */
+
+        .artists-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0,1fr));
+
+            gap: 14px;
+        }
+
+
+        .artist-card {
+
+            padding:
+                22px 15px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 13px;
+
+            background:
+                var(--search-panel);
+
+            text-decoration: none;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .artist-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(215,255,63,.2);
+        }
+
+
+        .artist-avatar {
+
+            width: 70px;
+            height: 70px;
+
+            margin:
+                0 auto 13px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            color:
+                #080808;
+
+            background:
+                var(--search-green);
+
+            font-size: 21px;
+
+            font-weight: 900;
+        }
+
+
+        .artist-card strong {
+
+            display: block;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+
+            font-size: 11px;
+        }
+
+
+        .artist-card span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 9px;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        .artist-followers {
+
+            margin-top: 12px;
+
+            font-size: 9px;
+
+            color:
+                rgba(255,255,255,.3);
+        }
+
+
+        /* =====================================================
+           DESIGNERS
+           ===================================================== */
+
+        .designer-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
+
+            gap: 15px;
+        }
+
+
+        .designer-card {
+
+            min-height: 180px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #090909
+                );
+
+            text-decoration: none;
+        }
+
+
+        .designer-card::before {
+
+            content: "";
+
+            width: 160px;
+            height: 160px;
+
+            position: absolute;
+
+            top: -70px;
+            right: -50px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.07);
+        }
+
+
+        .designer-icon {
+
+            position: absolute;
+
+            top: 20px;
+            left: 20px;
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius: 9px;
+
+            font-size: 18px;
+        }
+
+
+        .designer-card strong {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 13px;
+        }
+
+
+        .designer-card span {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: 6px;
+
+            font-size: 10px;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+           ===================================================== */
+
+        .empty-state {
+
+            display: none;
+
+            padding:
+                70px 20px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                var(--search-border);
+
+            border-radius: 15px;
+
+            background:
+                var(--search-panel);
+        }
+
+
+        .empty-state.visible {
+
+            display: block;
+        }
+
+
+        .empty-state-icon {
+
+            font-size: 34px;
+
+            margin-bottom: 15px;
+
+            color:
+                var(--search-green);
+        }
+
+
+        .empty-state h3 {
+
+            margin: 0;
+
+            font-size: 20px;
+        }
+
+
+        .empty-state p {
+
+            max-width: 450px;
+
+            margin:
+                10px auto 0;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            color:
+                var(--search-muted);
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        .search-footer {
+
+            padding:
+                35px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border-top:
+                1px solid
+                var(--search-border);
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 10px;
+        }
+
+
+        .search-footer strong {
+
+            color:
+                rgba(255,255,255,.6);
+
+            letter-spacing: .1em;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .music-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0,1fr));
+            }
+
+
+            .artists-grid {
+
+                grid-template-columns:
+                    repeat(4, minmax(0,1fr));
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .search-nav {
+
+                display: none;
+            }
+
+
+            .music-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
+            }
+
+
+            .artists-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0,1fr));
+            }
+
+
+            .designer-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
+            }
+
+
+            .beat-list {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .search-header {
+
+                padding:
+                    0 18px;
+            }
+
+
+            .search-login {
+
+                padding:
+                    0 11px;
+            }
+
+
+            .search-hero {
+
+                min-height:
+                    470px;
+
+                padding:
+                    60px 15px;
+            }
+
+
+            .search-hero h1 {
+
+                font-size: 48px;
+            }
+
+
+            .global-search {
+
+                height: auto;
+
+                padding:
+                    8px;
+
+                flex-wrap: wrap;
+            }
+
+
+            .global-search-icon {
+
+                margin-left: 10px;
+            }
+
+
+            .global-search input {
+
+                height: 48px;
+            }
+
+
+            .global-search button {
+
+                width: 100%;
+            }
+
+
+            .search-content {
+
+                padding:
+                    45px 15px 70px;
+            }
+
+
+            .results-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .music-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .artists-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
+            }
+
+
+            .designer-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .search-footer {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="search-header">
+
+
+    <a
+        href="../index.html"
+        class="search-logo"
+    >
+
+        VULCÂNICO<span>.</span>
+
+    </a>
+
+
+    <nav class="search-nav">
+
+        <a href="../index.html">
+            Início
+        </a>
+
+        <a
+            href="pesquisa.html"
+            class="active"
+        >
+            Pesquisa
+        </a>
+
+        <a href="#musicas">
+            Música
+        </a>
+
+        <a href="#instrumentais">
+            Instrumentais
+        </a>
+
+        <a href="#artistas">
+            Artistas
+        </a>
+
+        <a href="#designers">
+            Designers
+        </a>
+
+    </nav>
+
+
+    <a
+        href="login.html"
+        class="search-login"
+    >
+
+        Entrar
+
+    </a>
+
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="search-hero">
+
+
+    <div class="search-hero-content">
+
+
+        <span class="search-eyebrow">
+            Ecossistema Digital
+        </span>
+
+
+        <h1>
+
+            Encontre.
+            <br>
+
+            <span>Descubra.</span>
+
+        </h1>
+
+
+        <p>
+
+            Pesquise artistas, músicas, instrumentais,
+            produtores e designers dentro do
+            Ecossistema Digital Vulcânico.
+
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <form
+            class="global-search"
+            id="globalSearchForm"
+        >
+
+
+            <span class="global-search-icon">
+                ⌕
+            </span>
+
+
+            <input
+                type="search"
+                id="globalSearchInput"
+                placeholder="Pesquise por artista, música, beat ou designer..."
+                autocomplete="off"
+            >
+
+
+            <button
+                type="submit"
+            >
+
+                Pesquisar
+
+            </button>
+
+
+        </form>
+
+
+        <!-- FILTERS -->
+
+        <div class="search-filters">
+
+
+            <button
+                class="filter-button active"
+                data-filter="all"
+            >
+                Tudo
+            </button>
+
+
+            <button
+                class="filter-button"
+                data-filter="music"
+            >
+                Música
+            </button>
+
+
+            <button
+                class="filter-button"
+                data-filter="beats"
+            >
+                Instrumentais
+            </button>
+
+
+            <button
+                class="filter-button"
+                data-filter="artists"
+            >
+                Artistas
+            </button>
+
+
+            <button
+                class="filter-button"
+                data-filter="designers"
+            >
+                Designers
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     CONTENT
+     ========================================================= -->
+
+<main class="search-content">
+
+
+    <!-- RESULTS HEADER -->
+
+    <div class="results-header">
+
+
+        <div>
+
+            <small>
+                Descoberta
+            </small>
+
+            <h2 id="resultsTitle">
+                Conteúdo em destaque
+            </h2>
+
+        </div>
+
+
+        <span
+            class="result-count"
+            id="resultCount"
+        >
+            24 resultados
+        </span>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         MÚSICAS
+         ===================================================== -->
+
+    <section
+        class="results-section"
+        id="musicas"
+        data-section="music"
+    >
+
+
+        <div class="section-title">
+
+            <h3>
+                Músicas
+            </h3>
+
+            <a href="#musicas">
+                Ver tudo →
+            </a>
+
+        </div>
+
+
+        <div class="music-grid">
+
+
+            <article
+                class="music-card searchable-item"
+                data-type="music"
+                data-search="minha nova musica artista vulcanico afrobeat"
+            >
+
+                <div class="music-cover">
+
+                    <span class="music-cover-icon">
+                        ♪
+                    </span>
+
+                </div>
+
+
+                <div class="music-info">
+
+                    <strong>
+                        Minha Nova Música
+                    </strong>
+
+                    <span>
+                        Artista Vulcânico
+                    </span>
+
+
+                    <div class="music-meta">
+
+                        <small>
+                            Afrobeat
+                        </small>
+
+                        <button
+                            class="play-button"
+                            data-title="Minha Nova Música"
+                        >
+                            ▶
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="music-card searchable-item"
+                data-type="music"
+                data-search="noite de verao artista vulcanico kizomba"
+            >
+
+                <div class="music-cover">
+
+                    <span class="music-cover-icon">
+                        ♫
+                    </span>
+
+                </div>
+
+
+                <div class="music-info">
+
+                    <strong>
+                        Noite de Verão
+                    </strong>
+
+                    <span>
+                        Artista Vulcânico
+                    </span>
+
+
+                    <div class="music-meta">
+
+                        <small>
+                            Kizomba
+                        </small>
+
+                        <button
+                            class="play-button"
+                            data-title="Noite de Verão"
+                        >
+                            ▶
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="music-card searchable-item"
+                data-type="music"
+                data-search="caminho john vulcanico rnb"
+            >
+
+                <div class="music-cover">
+
+                    <span class="music-cover-icon">
+                        ♪
+                    </span>
+
+                </div>
+
+
+                <div class="music-info">
+
+                    <strong>
+                        Caminho
+                    </strong>
+
+                    <span>
+                        John Vulcânico
+                    </span>
+
+
+                    <div class="music-meta">
+
+                        <small>
+                            RnB
+                        </small>
+
+                        <button
+                            class="play-button"
+                            data-title="Caminho"
+                        >
+                            ▶
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="music-card searchable-item"
+                data-type="music"
+                data-search="cidade acesa trap young artist"
+            >
+
+                <div class="music-cover">
+
+                    <span class="music-cover-icon">
+                        ♫
+                    </span>
+
+                </div>
+
+
+                <div class="music-info">
+
+                    <strong>
+                        Cidade Acesa
+                    </strong>
+
+                    <span>
+                        Young Artist
+                    </span>
+
+
+                    <div class="music-meta">
+
+                        <small>
+                            Trap
+                        </small>
+
+                        <button
+                            class="play-button"
+                            data-title="Cidade Acesa"
+                        >
+                            ▶
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         INSTRUMENTAIS
+         ===================================================== -->
+
+    <section
+        class="results-section"
+        id="instrumentais"
+        data-section="beats"
+    >
+
+
+        <div class="section-title">
+
+            <h3>
+                Instrumentais
+            </h3>
+
+            <a href="comprar.html">
+                Explorar →
+            </a>
+
+        </div>
+
+
+        <div class="beat-list">
+
+
+            <article
+                class="beat-card searchable-item"
+                data-type="beats"
+                data-search="afro vibes afrobeat instrumental vulcanico"
+            >
+
+                <div class="beat-art">
+                    ♫
+                </div>
+
+
+                <div class="beat-info">
+
+                    <strong>
+                        Afro Vibes
+                    </strong>
+
+                    <span>
+                        Afrobeat • 98 BPM
+                    </span>
+
+                    <div class="beat-price">
+                        5.000 Kz
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="beat-button"
+                    data-title="Afro Vibes"
+                >
+                    ▶
+                </button>
+
+            </article>
+
+
+            <article
+                class="beat-card searchable-item"
+                data-type="beats"
+                data-search="dark streets trap instrumental"
+            >
+
+                <div class="beat-art">
+                    ♪
+                </div>
+
+
+                <div class="beat-info">
+
+                    <strong>
+                        Dark Streets
+                    </strong>
+
+                    <span>
+                        Trap • 140 BPM
+                    </span>
+
+                    <div class="beat-price">
+                        5.000 Kz
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="beat-button"
+                    data-title="Dark Streets"
+                >
+                    ▶
+                </button>
+
+            </article>
+
+
+            <article
+                class="beat-card searchable-item"
+                data-type="beats"
+                data-search="love rhythm kizomba instrumental"
+            >
+
+                <div class="beat-art">
+                    ♫
+                </div>
+
+
+                <div class="beat-info">
+
+                    <strong>
+                        Love Rhythm
+                    </strong>
+
+                    <span>
+                        Kizomba • 92 BPM
+                    </span>
+
+                    <div class="beat-price">
+                        5.000 Kz
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="beat-button"
+                    data-title="Love Rhythm"
+                >
+                    ▶
+                </button>
+
+            </article>
+
+
+            <article
+                class="beat-card searchable-item"
+                data-type="beats"
+                data-search="future amapiano instrumental"
+            >
+
+                <div class="beat-art">
+                    ♪
+                </div>
+
+
+                <div class="beat-info">
+
+                    <strong>
+                        Future
+                    </strong>
+
+                    <span>
+                        Amapiano • 112 BPM
+                    </span>
+
+                    <div class="beat-price">
+                        5.000 Kz
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="beat-button"
+                    data-title="Future"
+                >
+                    ▶
+                </button>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         ARTISTAS
+         ===================================================== -->
+
+    <section
+        class="results-section"
+        id="artistas"
+        data-section="artists"
+    >
+
+
+        <div class="section-title">
+
+            <h3>
+                Artistas
+            </h3>
+
+            <a href="#artistas">
+                Ver todos →
+            </a>
+
+        </div>
+
+
+        <div class="artists-grid">
+
+
+            <a
+                href="#artista"
+                class="artist-card searchable-item"
+                data-type="artists"
+                data-search="vulcanico artista produtor angola"
+            >
+
+                <div class="artist-avatar">
+                    V
+                </div>
+
+                <strong>
+                    Vulcânico
+                </strong>
+
+                <span>
+                    Artista / Produtor
+                </span>
+
+                <div class="artist-followers">
+                    2.4K ouvintes
+                </div>
+
+            </a>
+
+
+            <a
+                href="#artista"
+                class="artist-card searchable-item"
+                data-type="artists"
+                data-search="john vulcanico artista rnb"
+            >
+
+                <div class="artist-avatar">
+                    J
+                </div>
+
+                <strong>
+                    John Vulcânico
+                </strong>
+
+                <span>
+                    Artista
+                </span>
+
+                <div class="artist-followers">
+                    1.8K ouvintes
+                </div>
+
+            </a>
+
+
+            <a
+                href="#artista"
+                class="artist-card searchable-item"
+                data-type="artists"
+                data-search="young artist trap rapper"
+            >
+
+                <div class="artist-avatar">
+                    Y
+                </div>
+
+                <strong>
+                    Young Artist
+                </strong>
+
+                <span>
+                    Artista
+                </span>
+
+                <div class="artist-followers">
+                    980 ouvintes
+                </div>
+
+            </a>
+
+
+            <a
+                href="#artista"
+                class="artist-card searchable-item"
+                data-type="artists"
+                data-search="luna music cantora afrobeat"
+            >
+
+                <div class="artist-avatar">
+                    L
+                </div>
+
+                <strong>
+                    Luna Music
+                </strong>
+
+                <span>
+                    Artista
+                </span>
+
+                <div class="artist-followers">
+                    740 ouvintes
+                </div>
+
+            </a>
+
+
+            <a
+                href="#artista"
+                class="artist-card searchable-item"
+                data-type="artists"
+                data-search="mc nova rap artist"
+            >
+
+                <div class="artist-avatar">
+                    N
+                </div>
+
+                <strong>
+                    MC Nova
+                </strong>
+
+                <span>
+                    Artista
+                </span>
+
+                <div class="artist-followers">
+                    610 ouvintes
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         DESIGNERS
+         ===================================================== -->
+
+    <section
+        class="results-section"
+        id="designers"
+        data-section="designers"
+    >
+
+
+        <div class="section-title">
+
+            <h3>
+                Designers
+            </h3>
+
+            <a href="designer.html">
+                Encontrar designer →
+            </a>
+
+        </div>
+
+
+        <div class="designer-grid">
+
+
+            <a
+                href="designer.html"
+                class="designer-card searchable-item"
+                data-type="designers"
+                data-search="artelis visual designer capas musica"
+            >
+
+                <div class="designer-icon">
+                    ◈
+                </div>
+
+                <strong>
+                    ARTELIS VISUAL
+                </strong>
+
+                <span>
+                    Capas • Identidade Visual • Design
+                </span>
+
+            </a>
+
+
+            <a
+                href="designer.html"
+                class="designer-card searchable-item"
+                data-type="designers"
+                data-search="creative studio designer branding"
+            >
+
+                <div class="designer-icon">
+                    ◇
+                </div>
+
+                <strong>
+                    Creative Studio
+                </strong>
+
+                <span>
+                    Branding • Social Media • Capas
+                </span>
+
+            </a>
+
+
+            <a
+                href="designer.html"
+                class="designer-card searchable-item"
+                data-type="designers"
+                data-search="visual lab designer poster flyer"
+            >
+
+                <div class="designer-icon">
+                    ✦
+                </div>
+
+                <strong>
+                    Visual Lab
+                </strong>
+
+                <span>
+                    Posters • Flyers • Motion Design
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         EMPTY STATE
+         ===================================================== -->
+
+    <div
+        class="empty-state"
+        id="emptyState"
+    >
+
+        <div class="empty-state-icon">
+            ⌕
+        </div>
+
+        <h3>
+            Nada encontrado
+        </h3>
+
+        <p>
+            Não encontramos resultados para a sua pesquisa.
+            Tente outro nome, artista, instrumental,
+            género ou serviço.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="search-footer">
+
+    <strong>
+        VULCÂNICO.
+    </strong>
+
+    <span>
+        Onde artistas criam, conectam e crescem.
+    </span>
+
+    <span>
+        © 2026 Vulcânico
+    </span>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+"use strict";
+
+
+/* =========================================================
+   ELEMENTOS
+   ========================================================= */
+
+const searchForm =
+    document.getElementById(
+        "globalSearchForm"
+    );
+
+
+const searchInput =
+    document.getElementById(
+        "globalSearchInput"
+    );
+
+
+const resultCount =
+    document.getElementById(
+        "resultCount"
+    );
+
+
+const resultsTitle =
+    document.getElementById(
+        "resultsTitle"
+    );
+
+
+const emptyState =
+    document.getElementById(
+        "emptyState"
+    );
+
+
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-button"
+    );
+
+
+const searchableItems =
+    document.querySelectorAll(
+        ".searchable-item"
+    );
+
+
+const sections =
+    document.querySelectorAll(
+        ".results-section"
+    );
+
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+let activeFilter = "all";
+
+
+/* =========================================================
+   NORMALIZAR TEXTO
+   ========================================================= */
+
+function normalizeText(text) {
+
+    return text
+
+        .toLowerCase()
+
+        .normalize("NFD")
+
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+
+        .trim();
+
+}
+
+
+/* =========================================================
+   FILTRAR
+   ========================================================= */
+
+function performSearch() {
+
+
+    const query =
+        normalizeText(
+            searchInput.value
+        );
+
+
+    let visibleCount = 0;
+
+
+    searchableItems.forEach(item => {
+
+
+        const type =
+            item.dataset.type ||
+            "";
+
+
+        const searchData =
+            normalizeText(
+                item.dataset.search ||
+                item.textContent
+            );
+
+
+        const matchesQuery =
+            !query ||
+            searchData.includes(
+                query
+            );
+
+
+        const matchesFilter =
+            activeFilter === "all" ||
+            type === activeFilter;
+
+
+        const visible =
+            matchesQuery &&
+            matchesFilter;
+
+
+        item.style.display =
+            visible
+                ? ""
+                : "none";
+
+
+        if (visible) {
+
+            visibleCount++;
+
+        }
+
+    });
+
+
+    /* =====================================================
+       SEÇÕES
+       ===================================================== */
+
+    sections.forEach(section => {
+
+
+        const sectionType =
+            section.dataset.section;
+
+
+        const sectionItems =
+            section.querySelectorAll(
+                ".searchable-item"
+            );
+
+
+        let sectionVisible = 0;
+
+
+        sectionItems.forEach(item => {
+
+            if (
+                item.style.display !==
+                "none"
+            ) {
+
+                sectionVisible++;
+
+            }
+
+        });
+
+
+        section.style.display =
+            sectionVisible > 0
+                ? ""
+                : "none";
+
+    });
+
+
+    /* =====================================================
+       EMPTY STATE
+       ===================================================== */
+
+    if (visibleCount === 0) {
+
+        emptyState.classList
+            .add("visible");
+
+    } else {
+
+        emptyState.classList
+            .remove("visible");
+
+    }
+
+
+    /* =====================================================
+       CONTADOR
+       ===================================================== */
+
+    resultCount.textContent =
+        `${visibleCount} resultado${visibleCount === 1 ? "" : "s"}`;
+
+
+    /* =====================================================
+       TÍTULO
+       ===================================================== */
+
+    if (query) {
+
+        resultsTitle.textContent =
+            `Resultados para "${searchInput.value.trim()}"`;
+
+    } else if (
+        activeFilter !== "all"
+    ) {
+
+        const names = {
+
+            music:
+                "Músicas",
+
+            beats:
+                "Instrumentais",
+
+            artists:
+                "Artistas",
+
+            designers:
+                "Designers"
+
+        };
+
+
+        resultsTitle.textContent =
+            names[activeFilter] ||
+            "Resultados";
+
+    } else {
+
+        resultsTitle.textContent =
+            "Conteúdo em destaque";
+
+    }
+
+
+    /* =====================================================
+       URL
+       ===================================================== */
+
+    const params =
+        new URLSearchParams();
+
+
+    if (query) {
+
+        params.set(
+            "q",
+            searchInput.value.trim()
+        );
+
+    }
+
+
+    if (
+        activeFilter !== "all"
+    ) {
+
+        params.set(
+            "tipo",
+            activeFilter
+        );
+
+    }
+
+
+    const newUrl =
+        params.toString()
+            ? `${window.location.pathname}?${params.toString()}`
+            : window.location.pathname;
+
+
+    window.history.replaceState(
+        {},
+        "",
+        newUrl
+    );
+
+}
+
+
+/* =========================================================
+   FORM SUBMIT
+   ========================================================= */
+
+searchForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+        performSearch();
+
+    }
+);
+
+
+/* =========================================================
+   PESQUISA EM TEMPO REAL
+   ========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        performSearch();
+
+    }
+);
+
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+
+            filterButtons.forEach(
+                btn => {
+
+                    btn.classList
+                        .remove(
+                            "active"
+                        );
+
+                }
+            );
+
+
+            button.classList
+                .add("active");
+
+
+            activeFilter =
+                button.dataset.filter ||
+                "all";
+
+
+            performSearch();
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   LER URL
+   ========================================================= */
+
+function loadSearchFromURL() {
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const query =
+        params.get("q");
+
+
+    const type =
+        params.get("tipo");
+
+
+    if (query) {
+
+        searchInput.value =
+            query;
+
+    }
+
+
+    if (
+        type &&
+        [
+            "music",
+            "beats",
+            "artists",
+            "designers"
+        ].includes(type)
+    ) {
+
+        activeFilter =
+            type;
+
+
+        filterButtons.forEach(
+            button => {
+
+                button.classList
+                    .toggle(
+                        "active",
+                        button.dataset.filter ===
+                        type
+                    );
+
+            }
+        );
+
+    }
+
+
+    if (
+        query ||
+        type
+    ) {
+
+        performSearch();
+
+    }
+
+}
+
+
+loadSearchFromURL();
+
+
+/* =========================================================
+   PLAYER TEMPORÁRIO
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        ".play-button, .beat-button"
+    )
+    .forEach(button => {
+
+
+        button.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                const title =
+                    button.dataset.title ||
+                    "Conteúdo";
+
+
+                /*
+                   Quando o player global for
+                   integrado, esta parte será:
+
+                   window.VulcanicoPlayer.play(...)
+
+                */
+
+
+                if (
+                    window.VulcanicoPlayer
+                ) {
+
+                    window.VulcanicoPlayer.play({
+
+                        title,
+
+                        artist:
+                            "Vulcânico"
+
+                    });
+
+                } else {
+
+                    alert(
+                        `Player: ${title}`
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   PESQUISA POR TECLADO
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "/" &&
+            document.activeElement !==
+            searchInput
+        ) {
+
+            event.preventDefault();
+
+            searchInput.focus();
+
+        }
+
+    }
+);
+
+
+console.log(
+    "%cVULCÂNICO — PESQUISA",
+    "color:#d7ff3f;font-size:18px;font-weight:900;"
+);
+
+console.log(
+    "Motor de pesquisa carregado."
+);
+
+</script>
+
+
+</body>
+
+</html>
+```

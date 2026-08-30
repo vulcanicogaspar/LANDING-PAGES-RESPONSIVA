@@ -1,0 +1,2651 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pagamentos — Ecossistema Digital Vulcânico"
+    >
+
+    <title>Pagamentos — VULCÂNICO</title>
+
+
+    <!-- CSS PRINCIPAL -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --lime: #d7ff3f;
+
+            --black: #050505;
+
+            --panel: #0c0c0c;
+
+            --border:
+                rgba(255,255,255,.08);
+
+            --muted:
+                rgba(255,255,255,.42);
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 5%,
+                    rgba(215,255,63,.08),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 5% 90%,
+                    rgba(215,255,63,.035),
+                    transparent 30%
+                ),
+
+                var(--black);
+
+            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            height: 72px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background:
+                rgba(5,5,5,.86);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .logo {
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: .13em;
+
+        }
+
+
+        .logo span {
+            color: var(--lime);
+        }
+
+
+        .header-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .header-link {
+
+            padding:
+                10px 13px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 6px;
+
+            color:
+                rgba(255,255,255,.5);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .header-link:hover {
+
+            color: var(--lime);
+
+            border-color:
+                rgba(215,255,63,.3);
+
+        }
+
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            width:
+                min(1150px, 90%);
+
+            margin:
+                auto;
+
+            padding:
+                75px 0 120px;
+
+        }
+
+
+        .eyebrow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--lime);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background:
+                var(--lime);
+
+            box-shadow:
+                0 0 15px
+                var(--lime);
+
+        }
+
+
+        h1 {
+
+            max-width: 800px;
+
+            margin:
+                18px 0 15px;
+
+            font-size:
+                clamp(
+                    50px,
+                    8vw,
+                    86px
+                );
+
+            line-height: .88;
+
+            letter-spacing: -.07em;
+
+        }
+
+
+        h1 span {
+            color: var(--lime);
+        }
+
+
+        .intro {
+
+            max-width: 620px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            margin-bottom: 55px;
+
+        }
+
+
+
+        /* =====================================================
+           LAYOUT
+        ===================================================== */
+
+        .payment-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 370px;
+
+            gap: 25px;
+
+            align-items: start;
+
+        }
+
+
+        .panel {
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            overflow: hidden;
+
+        }
+
+
+        .panel-header {
+
+            padding:
+                22px 25px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .panel-header h2 {
+
+            margin: 0;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .panel-header p {
+
+            margin:
+                7px 0 0;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 8px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .panel-body {
+            padding: 25px;
+        }
+
+
+
+        /* =====================================================
+           ORDER
+        ===================================================== */
+
+        .order-box {
+
+            padding: 18px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.15);
+
+            border-radius: 8px;
+
+            background:
+                rgba(215,255,63,.035);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .order-label {
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .order-id {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color: var(--lime);
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: .04em;
+
+        }
+
+
+        .order-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .order-info div {
+
+            flex: 1;
+
+        }
+
+
+        .order-info span {
+
+            display: block;
+
+            color:
+                rgba(255,255,255,.28);
+
+            font-size: 7px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .order-info strong {
+
+            font-size: 9px;
+
+        }
+
+
+
+        /* =====================================================
+           PAYMENT METHODS
+        ===================================================== */
+
+        .methods {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .method {
+
+            position: relative;
+
+            padding: 18px 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.02);
+
+            cursor: pointer;
+
+            text-align: center;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .method:hover {
+
+            border-color:
+                rgba(215,255,63,.35);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .method.active {
+
+            border-color:
+                var(--lime);
+
+            background:
+                rgba(215,255,63,.06);
+
+        }
+
+
+        .method-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            margin:
+                0 auto 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.06);
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+        }
+
+
+        .method.active
+        .method-icon {
+
+            background:
+                rgba(215,255,63,.12);
+
+            color: var(--lime);
+
+        }
+
+
+        .method strong {
+
+            display: block;
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .method span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 6px;
+
+        }
+
+
+
+        /* =====================================================
+           ACCOUNT DETAILS
+        ===================================================== */
+
+        .account-details {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.02);
+
+        }
+
+
+        .account-title {
+
+            margin-bottom: 15px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .account-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.05);
+
+        }
+
+
+        .account-row:last-child {
+            border-bottom: 0;
+        }
+
+
+        .account-row span {
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+        }
+
+
+        .account-row strong {
+
+            color: white;
+
+            font-size: 9px;
+
+            text-align: right;
+
+            word-break: break-word;
+
+        }
+
+
+        .copy-btn {
+
+            margin-left: 5px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--lime);
+
+            cursor: pointer;
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+        }
+
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-top: 22px;
+
+        }
+
+
+        .form-group:first-child {
+            margin-top: 0;
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: white;
+
+            font-size: 10px;
+
+        }
+
+
+        select option {
+            background: #111;
+        }
+
+
+        input:focus,
+        select:focus {
+
+            border-color:
+                rgba(215,255,63,.4);
+
+        }
+
+
+        .two-columns {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+
+
+        /* =====================================================
+           UPLOAD
+        ===================================================== */
+
+        .upload-area {
+
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 180px;
+
+            padding: 25px;
+
+            border:
+                1px dashed
+                rgba(255,255,255,.15);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.02);
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .upload-area:hover {
+
+            border-color:
+                rgba(215,255,63,.45);
+
+            background:
+                rgba(215,255,63,.025);
+
+        }
+
+
+        .upload-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 12px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.08);
+
+            color: var(--lime);
+
+            font-size: 16px;
+
+        }
+
+
+        .upload-area strong {
+
+            font-size: 9px;
+
+        }
+
+
+        .upload-area span {
+
+            margin-top: 7px;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+            line-height: 1.5;
+
+        }
+
+
+        #receipt {
+
+            position: absolute;
+
+            opacity: 0;
+
+            width: 1px;
+
+            height: 1px;
+
+        }
+
+
+        .file-name {
+
+            display: none;
+
+            margin-top: 12px;
+
+            padding:
+                8px 10px;
+
+            border-radius: 5px;
+
+            background:
+                rgba(215,255,63,.08);
+
+            color: var(--lime);
+
+            font-size: 7px;
+
+        }
+
+
+
+        /* =====================================================
+           SUBMIT
+        ===================================================== */
+
+        .submit-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            margin-top: 22px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background:
+                var(--lime);
+
+            color: #050505;
+
+            cursor: pointer;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(215,255,63,.12);
+
+        }
+
+
+        .security {
+
+            margin-top: 12px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.2);
+
+            font-size: 7px;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ===================================================== */
+
+        .side-card {
+
+            padding: 23px;
+
+        }
+
+
+        .side-card h3 {
+
+            margin: 0 0 18px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .steps {
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        .step {
+
+            display: grid;
+
+            grid-template-columns:
+                30px 1fr;
+
+            gap: 12px;
+
+            padding-bottom: 22px;
+
+            position: relative;
+
+        }
+
+
+        .step:not(:last-child)::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 30px;
+
+            width: 1px;
+
+            height: calc(100% - 22px);
+
+            background:
+                rgba(255,255,255,.08);
+
+        }
+
+
+        .step-number {
+
+            width: 29px;
+
+            height: 29px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.08);
+
+            color: var(--lime);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .step strong {
+
+            display: block;
+
+            font-size: 8px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .step p {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+            line-height: 1.6;
+
+        }
+
+
+
+        /* =====================================================
+           IMPORTANT
+        ===================================================== */
+
+        .important {
+
+            margin-top: 15px;
+
+            padding: 18px;
+
+            border:
+                1px solid
+                rgba(255,100,100,.12);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,100,100,.025);
+
+        }
+
+
+        .important strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color:
+                rgba(255,150,150,.8);
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .important p {
+
+            margin: 0;
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+            line-height: 1.7;
+
+        }
+
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+
+            margin-top: 15px;
+
+            padding: 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 8px;
+
+        }
+
+
+        .status-title {
+
+            color:
+                rgba(255,255,255,.3);
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .status-value {
+
+            margin-top: 8px;
+
+            color: var(--lime);
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+        }
+
+
+
+        /* =====================================================
+           SUCCESS MODAL
+        ===================================================== */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.82);
+
+            backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        .modal.active {
+            display: flex;
+        }
+
+
+        .modal-box {
+
+            width:
+                min(470px,100%);
+
+            padding: 40px;
+
+            border:
+                1px solid
+                rgba(215,255,63,.2);
+
+            border-radius: 12px;
+
+            background:
+                #0b0b0b;
+
+            text-align: center;
+
+        }
+
+
+        .modal-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin:
+                0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(215,255,63,.1);
+
+            color: var(--lime);
+
+            font-size: 25px;
+
+        }
+
+
+        .modal-box h2 {
+
+            margin: 0;
+
+            font-size: 22px;
+
+        }
+
+
+        .modal-box p {
+
+            margin:
+                12px 0 25px;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-size: 9px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .modal-btn {
+
+            display: inline-block;
+
+            padding:
+                13px 18px;
+
+            border-radius: 6px;
+
+            background: var(--lime);
+
+            color: #050505;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:900px) {
+
+            .payment-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media(max-width:650px) {
+
+            .methods {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .two-columns {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .header-link {
+
+                display: none;
+
+            }
+
+
+            h1 {
+
+                font-size: 52px;
+
+            }
+
+        }
+
+
+        @media(max-width:450px) {
+
+            .page {
+
+                width:
+                    calc(100% - 30px);
+
+            }
+
+
+            .panel-body {
+
+                padding: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        VULCÂNICO<span>.</span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <a
+            href="dashboard.html"
+            class="header-link"
+        >
+            Dashboard
+        </a>
+
+
+        <a
+            href="perfil.html"
+            class="header-link"
+        >
+            Meu Perfil
+        </a>
+
+
+        <a
+            href="pesquisa.html"
+            class="header-link"
+        >
+            Pesquisar
+        </a>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+
+    <div class="eyebrow">
+        Pagamentos
+    </div>
+
+
+    <h1>
+
+        Finalize o seu<br>
+
+        <span>pedido.</span>
+
+    </h1>
+
+
+    <p class="intro">
+
+        Utilize um dos métodos de pagamento disponíveis
+        e envie o comprovativo. A equipa Vulcânico irá
+        analisar o pagamento antes de liberar o serviço.
+
+    </p>
+
+
+
+    <div class="payment-layout">
+
+
+
+        <!-- =================================================
+             PAYMENT FORM
+        ================================================== -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <h2>
+                    Dados do pagamento
+                </h2>
+
+                <p>
+                    Confirme a referência e envie o
+                    comprovativo da transferência.
+                </p>
+
+            </div>
+
+
+
+            <div class="panel-body">
+
+
+
+                <!-- PEDIDO -->
+
+                <div class="order-box">
+
+                    <span class="order-label">
+                        Referência do pedido
+                    </span>
+
+
+                    <strong
+                        class="order-id"
+                        id="orderId"
+                    >
+                        VUL-000000
+                    </strong>
+
+
+                    <div class="order-info">
+
+                        <div>
+
+                            <span>
+                                Serviço
+                            </span>
+
+                            <strong
+                                id="orderService"
+                            >
+                                Divulgação
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong
+                                id="orderPrice"
+                            >
+                                3.500 Kz
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MÉTODO -->
+
+                <div class="form-group">
+
+                    <label>
+                        Método de pagamento
+                    </label>
+
+
+                    <div class="methods">
+
+
+                        <div
+                            class="method active"
+                            data-method="iban"
+                        >
+
+                            <div class="method-icon">
+                                IB
+                            </div>
+
+                            <strong>
+                                IBAN
+                            </strong>
+
+                            <span>
+                                Transferência bancária
+                            </span>
+
+                        </div>
+
+
+
+                        <div
+                            class="method"
+                            data-method="express"
+                        >
+
+                            <div class="method-icon">
+                                E
+                            </div>
+
+                            <strong>
+                                Express
+                            </strong>
+
+                            <span>
+                                Pagamento Express
+                            </span>
+
+                        </div>
+
+
+
+                        <div
+                            class="method"
+                            data-method="unitel"
+                        >
+
+                            <div class="method-icon">
+                                U
+                            </div>
+
+                            <strong>
+                                Unitel Money
+                            </strong>
+
+                            <span>
+                                Pagamento móvel
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DADOS DA CONTA -->
+
+                <div
+                    class="account-details"
+                    id="accountDetails"
+                >
+
+                    <div class="account-title">
+                        Dados para pagamento
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Titular
+                        </span>
+
+                        <strong>
+                            VULCÂNICO ENTERTAINMENT
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span id="accountLabel">
+                            IBAN
+                        </span>
+
+                        <strong>
+
+                            <span id="accountNumber">
+                                AO00 0000 0000 0000 0000 0000 0
+                            </span>
+
+                            <button
+                                class="copy-btn"
+                                id="copyAccount"
+                                type="button"
+                            >
+                                COPIAR
+                            </button>
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Referência
+                        </span>
+
+                        <strong
+                            id="paymentReference"
+                        >
+                            VUL-000000
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- NOME -->
+
+                <div class="two-columns">
+
+
+                    <div class="form-group">
+
+                        <label for="payerName">
+                            Nome do pagador
+                        </label>
+
+                        <input
+                            type="text"
+                            id="payerName"
+                            placeholder="Nome completo"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="payerPhone">
+                            Número utilizado
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="payerPhone"
+                            placeholder="9xx xxx xxx"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- TRANSACTION ID -->
+
+                <div class="form-group">
+
+                    <label for="transaction">
+                        Número da transação
+                    </label>
+
+                    <input
+                        type="text"
+                        id="transaction"
+                        placeholder="Digite o número/ID da operação"
+                    >
+
+                </div>
+
+
+
+                <!-- UPLOAD -->
+
+                <div class="form-group">
+
+                    <label>
+                        Comprovativo
+                    </label>
+
+
+                    <label
+                        class="upload-area"
+                        for="receipt"
+                    >
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+
+                        <strong>
+                            Clique para enviar o comprovativo
+                        </strong>
+
+
+                        <span>
+
+                            PNG, JPG ou PDF<br>
+                            Tamanho máximo recomendado: 10 MB
+
+                        </span>
+
+
+                        <span
+                            class="file-name"
+                            id="fileName"
+                        ></span>
+
+
+                        <input
+                            type="file"
+                            id="receipt"
+                            accept=".jpg,.jpeg,.png,.pdf"
+                        >
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    class="submit-btn"
+                    id="submitPayment"
+                    type="button"
+                >
+
+                    Enviar comprovativo →
+
+                </button>
+
+
+                <div class="security">
+
+                    🔒 O comprovativo será utilizado
+                    exclusivamente para validação do pagamento.
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SIDE
+        ================================================== -->
+
+        <aside>
+
+
+            <div class="panel side-card">
+
+
+                <h3>
+                    Como funciona
+                </h3>
+
+
+                <ol class="steps">
+
+
+                    <li class="step">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Faça o pagamento
+                            </strong>
+
+                            <p>
+                                Utilize os dados de pagamento
+                                apresentados nesta página.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="step">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Guarde o comprovativo
+                            </strong>
+
+                            <p>
+                                Certifique-se de que o comprovativo
+                                mostra claramente a operação.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Envie aqui
+                            </strong>
+
+                            <p>
+                                Preencha os dados e carregue
+                                o comprovativo.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="step">
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Aguarde validação
+                            </strong>
+
+                            <p>
+                                A equipa Vulcânico verificará
+                                o pagamento e atualizará o estado.
+                            </p>
+
+                        </div>
+
+                    </li>
+
+
+                </ol>
+
+
+
+                <div class="important">
+
+                    <strong>
+                        Importante
+                    </strong>
+
+                    <p>
+
+                        Não envie dinheiro para números diferentes
+                        dos apresentados oficialmente nesta página.
+                        Nunca partilhe códigos secretos, PIN ou
+                        palavras-passe.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="status">
+
+                    <div class="status-title">
+                        Estado atual
+                    </div>
+
+                    <div
+                        class="status-value"
+                        id="paymentStatus"
+                    >
+                        Aguardando pagamento
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     SUCCESS MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="successModal"
+>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Comprovativo enviado
+        </h2>
+
+
+        <p>
+
+            Recebemos os dados do seu pagamento.
+            A equipa Vulcânico irá analisar o comprovativo.
+            O estado do pedido será atualizado após a validação.
+
+        </p>
+
+
+        <a
+            href="dashboard.html"
+            class="modal-btn"
+        >
+            Ir para Dashboard →
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+"use strict";
+
+
+/* =========================================================
+   REFERÊNCIA DO PEDIDO
+========================================================= */
+
+function generateOrderId() {
+
+    const number =
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+    return "VUL-" + number;
+
+}
+
+
+let orderId =
+    localStorage.getItem(
+        "vulcanico_order_id"
+    );
+
+
+if (!orderId) {
+
+    orderId =
+        generateOrderId();
+
+    localStorage.setItem(
+        "vulcanico_order_id",
+        orderId
+    );
+
+}
+
+
+document
+    .getElementById(
+        "orderId"
+    )
+    .textContent =
+        orderId;
+
+
+document
+    .getElementById(
+        "paymentReference"
+    )
+    .textContent =
+        orderId;
+
+
+
+/* =========================================================
+   LER CAMPANHA DE DIVULGAÇÃO
+========================================================= */
+
+const campaign =
+    JSON.parse(
+        localStorage.getItem(
+            "vulcanico_campaign"
+        )
+        || "null"
+    );
+
+
+if (campaign) {
+
+    document
+        .getElementById(
+            "orderService"
+        )
+        .textContent =
+            "Divulgação — " +
+            campaign.plan;
+
+
+    document
+        .getElementById(
+            "orderPrice"
+        )
+        .textContent =
+            new Intl.NumberFormat(
+                "pt-AO"
+            ).format(
+                campaign.price
+            ) + " Kz";
+
+}
+
+
+
+/* =========================================================
+   MÉTODOS DE PAGAMENTO
+========================================================= */
+
+const methods =
+    document.querySelectorAll(
+        ".method"
+    );
+
+
+const paymentData = {
+
+    iban: {
+
+        label: "IBAN",
+
+        number:
+            "AO00 0000 0000 0000 0000 0000 0"
+
+    },
+
+    express: {
+
+        label: "Número Express",
+
+        number:
+            "000 000 000"
+
+    },
+
+    unitel: {
+
+        label: "Unitel Money",
+
+        number:
+            "000 000 000"
+
+    }
+
+};
+
+
+let selectedMethod =
+    "iban";
+
+
+methods.forEach(
+    method => {
+
+        method.addEventListener(
+            "click",
+            () => {
+
+
+                methods.forEach(
+                    item =>
+                        item.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                method.classList.add(
+                    "active"
+                );
+
+
+                selectedMethod =
+                    method.dataset.method;
+
+
+                updatePaymentData();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   ATUALIZAR DADOS
+========================================================= */
+
+function updatePaymentData() {
+
+    const data =
+        paymentData[
+            selectedMethod
+        ];
+
+
+    document
+        .getElementById(
+            "accountLabel"
+        )
+        .textContent =
+            data.label;
+
+
+    document
+        .getElementById(
+            "accountNumber"
+        )
+        .textContent =
+            data.number;
+
+}
+
+
+updatePaymentData();
+
+
+
+/* =========================================================
+   COPIAR NÚMERO
+========================================================= */
+
+document
+    .getElementById(
+        "copyAccount"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            const number =
+                document
+                    .getElementById(
+                        "accountNumber"
+                    )
+                    .textContent;
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    number
+                );
+
+
+                const button =
+                    document
+                        .getElementById(
+                            "copyAccount"
+                        );
+
+
+                button.textContent =
+                    "COPIADO";
+
+
+                setTimeout(
+                    () => {
+
+                        button.textContent =
+                            "COPIAR";
+
+                    },
+                    1500
+                );
+
+
+            } catch(error) {
+
+                alert(
+                    "Não foi possível copiar automaticamente."
+                );
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   UPLOAD
+========================================================= */
+
+const receipt =
+    document.getElementById(
+        "receipt"
+    );
+
+
+receipt.addEventListener(
+    "change",
+    () => {
+
+        const file =
+            receipt.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const maxSize =
+            10 * 1024 * 1024;
+
+
+        if (file.size > maxSize) {
+
+            alert(
+                "O ficheiro ultrapassa 10 MB."
+            );
+
+
+            receipt.value = "";
+
+            return;
+
+        }
+
+
+        const fileName =
+            document.getElementById(
+                "fileName"
+            );
+
+
+        fileName.textContent =
+            "✓ " + file.name;
+
+
+        fileName.style.display =
+            "inline-block";
+
+    }
+);
+
+
+
+/* =========================================================
+   ENVIAR PAGAMENTO
+========================================================= */
+
+document
+    .getElementById(
+        "submitPayment"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+
+            const payer =
+                document
+                    .getElementById(
+                        "payerName"
+                    )
+                    .value
+                    .trim();
+
+
+            const phone =
+                document
+                    .getElementById(
+                        "payerPhone"
+                    )
+                    .value
+                    .trim();
+
+
+            const transaction =
+                document
+                    .getElementById(
+                        "transaction"
+                    )
+                    .value
+                    .trim();
+
+
+            const file =
+                receipt.files[0];
+
+
+            if (!payer) {
+
+                alert(
+                    "Digite o nome do pagador."
+                );
+
+                return;
+
+            }
+
+
+            if (!phone) {
+
+                alert(
+                    "Digite o número utilizado no pagamento."
+                );
+
+                return;
+
+            }
+
+
+            if (!transaction) {
+
+                alert(
+                    "Digite o número/ID da transação."
+                );
+
+                return;
+
+            }
+
+
+            if (!file) {
+
+                alert(
+                    "Envie o comprovativo do pagamento."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               OBJETO DO PAGAMENTO
+            ============================================== */
+
+            const payment = {
+
+                id:
+                    "PAY-" +
+                    Date.now(),
+
+                orderId,
+
+                service:
+                    document
+                        .getElementById(
+                            "orderService"
+                        )
+                        .textContent,
+
+                amount:
+                    document
+                        .getElementById(
+                            "orderPrice"
+                        )
+                        .textContent,
+
+                method:
+                    selectedMethod,
+
+                payer,
+
+                phone,
+
+                transaction,
+
+                receipt:
+                    file.name,
+
+                status:
+                    "em_analise",
+
+                createdAt:
+                    new Date()
+                        .toISOString()
+
+            };
+
+
+            /*
+             * TEMPORARIAMENTE:
+             * guardamos os dados no navegador.
+             *
+             * NO BACKEND:
+             * estes dados serão enviados para a API
+             * e o comprovativo será armazenado no servidor.
+             */
+
+            localStorage.setItem(
+                "vulcanico_payment",
+                JSON.stringify(
+                    payment
+                )
+            );
+
+
+            localStorage.setItem(
+                "vulcanico_payment_status",
+                "em_analise"
+            );
+
+
+            document
+                .getElementById(
+                    "paymentStatus"
+                )
+                .textContent =
+                    "Pagamento em análise";
+
+
+            document
+                .getElementById(
+                    "successModal"
+                )
+                .classList.add(
+                    "active"
+                );
+
+        }
+    );
+
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".panel"
+    )
+    .forEach(
+        (panel, index) => {
+
+            panel.style.opacity = "0";
+
+            panel.style.transform =
+                "translateY(20px)";
+
+
+            setTimeout(
+                () => {
+
+                    panel.style.transition =
+                        "opacity .7s ease, transform .7s ease";
+
+
+                    panel.style.opacity =
+                        "1";
+
+
+                    panel.style.transform =
+                        "translateY(0)";
+
+                },
+                100 + index * 120
+            );
+
+        }
+    );
+
+</script>
+
+
+
+</body>
+
+</html>
+```
